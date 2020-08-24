@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/PA0.dir/buggy.cpp.o  -o PA0 
