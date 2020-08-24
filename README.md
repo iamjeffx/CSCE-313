@@ -1,5 +1,5 @@
 # CSCE-313
-All code written for my Intro to Systems course. This course was taken in Fall 2020 with Professor Sarker Tanzir Ahmed. The textbook used for this class is **[here]**(https://drive.google.com/file/d/1NrLFA0y8pYMRyVldDrwlCPZgXAcARhXm/view).
+All code written for my Intro to Systems course. This course was taken in Fall 2020 with Professor Sarker Tanzir Ahmed. The textbook used for this class is [**here**](https://drive.google.com/file/d/1NrLFA0y8pYMRyVldDrwlCPZgXAcARhXm/view).
 
 ## Cloning
 To clone this repository onto your local machine, run the following command in your Unix-based terminal:
