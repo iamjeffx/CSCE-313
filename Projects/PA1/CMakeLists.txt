@@ -4,4 +4,4 @@ project(PA1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(PA1 Client.cpp common.cpp common.h FIFOreqchannel.cpp FIFOreqchannel.h server.cpp)
+add_executable(PA1 client.cpp common.cpp common.h FIFOreqchannel.cpp FIFOreqchannel.h server.cpp)
