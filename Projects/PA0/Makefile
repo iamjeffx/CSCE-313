@@ -1,5 +1,8 @@
+CXX = g++
+CXXFLAGS = -Wall -Werror -Wpedantic
+
 all: buggy.o
-	g++ -Wall buggy.cpp -g -o buggy.out
+	$(CXX) $(CXXFLAGS) buggy.cpp -g -o buggy.out
 
 clean:
 	rm -rf *.o

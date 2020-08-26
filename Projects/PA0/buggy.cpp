@@ -20,7 +20,7 @@ void create_LL(vector<node*>& mylist, int node_num){
 
     //create a linked list
     for (int i = 0; i < node_num - 1; i++) {
-        mylist[i]->next = mylist[i+1];
+        mylist[i]->next = mylist[i + 1];
     }
 }
 
