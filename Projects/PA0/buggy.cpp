@@ -3,11 +3,11 @@
 using namespace std;
 
 class node {
-public:	
- 	int val;
- 	node* next;
+public:
+    int val;
+    node* next;
 };
- 
+
 void create_LL(vector<node*>& mylist, int node_num){
     mylist.assign(node_num, NULL);
 
