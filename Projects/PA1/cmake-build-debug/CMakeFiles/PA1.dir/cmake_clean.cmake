@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/PA1.dir/Client.cpp.o"
   "CMakeFiles/PA1.dir/FIFOreqchannel.cpp.o"
+  "CMakeFiles/PA1.dir/client.cpp.o"
   "CMakeFiles/PA1.dir/common.cpp.o"
   "CMakeFiles/PA1.dir/server.cpp.o"
   "PA1"

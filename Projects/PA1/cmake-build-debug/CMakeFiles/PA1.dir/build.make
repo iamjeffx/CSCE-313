@@ -77,18 +77,18 @@ include CMakeFiles/PA1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/PA1.dir/flags.make
 
-CMakeFiles/PA1.dir/Client.cpp.o: CMakeFiles/PA1.dir/flags.make
-CMakeFiles/PA1.dir/Client.cpp.o: ../Client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/CLionProjects/CSCE313/Projects/PA1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PA1.dir/Client.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA1.dir/Client.cpp.o -c /home/osboxes/CLionProjects/CSCE313/Projects/PA1/Client.cpp
+CMakeFiles/PA1.dir/client.cpp.o: CMakeFiles/PA1.dir/flags.make
+CMakeFiles/PA1.dir/client.cpp.o: ../client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/CLionProjects/CSCE313/Projects/PA1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PA1.dir/client.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA1.dir/client.cpp.o -c /home/osboxes/CLionProjects/CSCE313/Projects/PA1/client.cpp
 
-CMakeFiles/PA1.dir/Client.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA1.dir/Client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/CLionProjects/CSCE313/Projects/PA1/Client.cpp > CMakeFiles/PA1.dir/Client.cpp.i
+CMakeFiles/PA1.dir/client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA1.dir/client.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/CLionProjects/CSCE313/Projects/PA1/client.cpp > CMakeFiles/PA1.dir/client.cpp.i
 
-CMakeFiles/PA1.dir/Client.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA1.dir/Client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/CLionProjects/CSCE313/Projects/PA1/Client.cpp -o CMakeFiles/PA1.dir/Client.cpp.s
+CMakeFiles/PA1.dir/client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA1.dir/client.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/CLionProjects/CSCE313/Projects/PA1/client.cpp -o CMakeFiles/PA1.dir/client.cpp.s
 
 CMakeFiles/PA1.dir/common.cpp.o: CMakeFiles/PA1.dir/flags.make
 CMakeFiles/PA1.dir/common.cpp.o: ../common.cpp
@@ -131,7 +131,7 @@ CMakeFiles/PA1.dir/server.cpp.s: cmake_force
 
 # Object files for target PA1
 PA1_OBJECTS = \
-"CMakeFiles/PA1.dir/Client.cpp.o" \
+"CMakeFiles/PA1.dir/client.cpp.o" \
 "CMakeFiles/PA1.dir/common.cpp.o" \
 "CMakeFiles/PA1.dir/FIFOreqchannel.cpp.o" \
 "CMakeFiles/PA1.dir/server.cpp.o"
@@ -139,7 +139,7 @@ PA1_OBJECTS = \
 # External object files for target PA1
 PA1_EXTERNAL_OBJECTS =
 
-PA1: CMakeFiles/PA1.dir/Client.cpp.o
+PA1: CMakeFiles/PA1.dir/client.cpp.o
 PA1: CMakeFiles/PA1.dir/common.cpp.o
 PA1: CMakeFiles/PA1.dir/FIFOreqchannel.cpp.o
 PA1: CMakeFiles/PA1.dir/server.cpp.o

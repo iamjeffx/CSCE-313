@@ -82,13 +82,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA1/Client.cpp">
-			<Option target="PA1"/>
-		</Unit>
 		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA1/FIFOreqchannel.cpp">
 			<Option target="PA1"/>
 		</Unit>
 		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA1/FIFOreqchannel.h">
+			<Option target="PA1"/>
+		</Unit>
+		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA1/client.cpp">
 			<Option target="PA1"/>
 		</Unit>
 		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA1/common.cpp">

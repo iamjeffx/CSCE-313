@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/Client.cpp" "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/Client.cpp.o"
   "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/FIFOreqchannel.cpp" "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/FIFOreqchannel.cpp.o"
+  "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/client.cpp" "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/client.cpp.o"
   "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/common.cpp" "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/common.cpp.o"
   "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/server.cpp" "/home/osboxes/CLionProjects/CSCE313/Projects/PA1/cmake-build-debug/CMakeFiles/PA1.dir/server.cpp.o"
   )
