@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.16)  29 AUG 2020 15:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.16)  29 AUG 2020 18:03
 entering extended mode
 **./Quiz1.tex
 (Quiz1.tex
@@ -236,43 +236,46 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 
 {C:/Users/jeffr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 [2] [3] [4]
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 23
-5.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 24
+3.
 
 ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 235
+LaTeX Font Info:    Trying to load font information for U+msa on input line 243
 .
 
 ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 235
+LaTeX Font Info:    Trying to load font information for U+msb on input line 243
 .
 ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 276--284
+) [5]
+Underfull \hbox (badness 10000) in paragraph at lines 290--298
 
  []
 
-[5] [6] (Quiz1.aux) ) 
+[6] [7] (Quiz1.aux) ) 
 Here is how much of TeX's memory you used:
  2332 strings out of 492450
  32925 string characters out of 3120005
- 101952 words of memory out of 3000000
+ 100952 words of memory out of 3000000
  6650 multiletter control sequences out of 15000+200000
  11814 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,32p,891b,149s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,6n,32p,978b,149s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/en
 c/dvips/base/8r.enc}<C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/urw/times/utmb8a.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/urw/times/utmr8a.pfb>
-Output written on Quiz1.pdf (6 pages, 44377 bytes).
+e1/public/amsfonts/cm/cmmi12.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/jeffr/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jeffr/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/jeffr/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
+Output written on Quiz1.pdf (7 pages, 75164 bytes).
 PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
+ 47 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

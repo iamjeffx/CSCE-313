@@ -221,11 +221,19 @@ This is a privileged instruction since it involves modifying data in memory. If 
 
 {\bf b)} Disabling and Enabling Interrupts:
 
+Disabling and enabling interrupts is an instruction that can only be performed in kernel mode. Therefore it is a privileged instruction. 
+
 {\bf c)} Using the "trap" instruction:
+
+A trap instruction is just an instruction to switch between user and kernel mode. It can be called in user mode, therefore it isn't a privileged instruction. 
 
 {\bf d)} Handling an Interrupt:
 
+Handling an interrupt requires running code in the interrupt handler which is stored in the kernel. Therefore only the kernel can handle an interrupt making interrupt handling a privileged instruction. 
+
 {\bf e)} Clearing the Interrupt Flag:
+
+Clearing the interrupt flag has the same protection as disabling and enabling interrupts as both deal with interrupt flags. Therefore clearing the interrupt flag is a kernel-mode only instruction making it a privileged instruction. 
 
 \bigskip
 
@@ -251,20 +259,26 @@ Needs terminal? & No & Yes & No\\
 
 {\bf a.} What is the total time of completion for all jobs in sequential and multi-programmed model? 
 
+The time to run jobs sequentially is the sum of the time it takes to run each job since only one job can be run at one time. Therefore the total time for sequentially running of all the jobs is $5+10+15=30$ min. 
+
+In multi-programming, the time it takes to run a sequence of jobs is the job that takes the most time since multiprogramming allows the CPU to run multiple jobs asynchronously. Therefore the total time to run the three jobs in multi-programming would be $max(5,10,15)=15$ min. 
+
 {\bf b.} Fill out the multiprogramming column in the following table (i.e., when the jobs are scheduled in multiprogramming). Assume that the system's physical memory is 256 MB.
+
+The total running time for multi-programming is 15 min, and since only job 1 is using the CPU, the average processor use is $5/15=33.33\%$. The average memory for multi-programming is calculated the same way as for sequential except the total run time is decreased by a factor of 2. This means that for multi-programming the memory usage would be double; $(5*50+15*100+15*75)/(15*256)=65.1\%$. The average disk use is $10$ min$/15$ min$=66.67\%$. The average terminal use is $15$ min $/15$ min$=100\%$. 
 
 \begin{center}
 \begin{tabular}{| c || c | c |}
 \hline
 Average Resource Use & Sequential & Multiprogramming\\
 \hline\hline
-Processor & 5/30 = 16.67\% &\\
+Processor & 5/30 = 16.67\% & 33.33\%\\
 \hline
-Memory & 32.55\% &\\
+Memory & 32.55\% & 65.1\%\\
 \hline
-Disk & 33.33\% & \\
+Disk & 33.33\% & 66.67\%\\
 \hline
-Terminal & 50\% &\\
+Terminal & 50\% & 100\%\\
 \hline
 \end{tabular}
 \end{center}
@@ -287,8 +301,14 @@ Terminal & 50\% &\\
 \tab Stores the rest of the general-purpose registers being used by the interrupt process\\
 \tab Does the rest of the interrupt handling operation? 
 
+In order for us to be able to handle nested interrupts, all interrupts must be prioritized in order for us to know which interrupt to deal with if a nested interrupt occurs. Therefore, before we start to copy all the memory to the KIS, we need to assign a priority to the interrupt and put all of the current interrupts into a priority queue. When the Interrupt Handler is called, we then handle the interrupts in teh priority queue in the given order that the priority queue assigns them to. This way if we are handling an interrupt and another interrupt occurs, we simply put that interrupt into the priority queue and pull the next element from the queue (if a low-priority interrupt is interrupted by a high-priority interrupt, the high-priority interrupt will run and if a high-priority interrupt is interrupted by a low-priority interrupt, the high-priority interrupt will be handled first; interrupts with the same priority will be handled by time order). 
+
 {\bf b.} [3 pts]: Can you interchange steps 2 and 3? Why or why not?
 
+Steps 2 and 3 cannot be interchanged. This is because step 3 depends on the completion of step 2. We can copy the memory values for PC, SP and the flags into the KIS if we are not in the kernel mode. Therefore, if we try to copy all the data and then switch into kernel mode, the memory wouldn't copy because the user mode doesn't have the authorization to perform kernel operations. 
+
 {\bf c.} [2 pts]: Can we interchange step 1 with step 2? Why or why not?
+
+Step 1 and step 2 in the hardware process should be able to be interchanged, although it is kind of redundant to switch them. Masking the interrupt can be performed in any mode, user or kernel. Therefore if we first switch to kernel mode, we can still mask further interrupts, though typically once an interrupt has happened, we probably want to mask further interrupts as soon as possible to prevent too much overhead. 
 
 \end{document}
