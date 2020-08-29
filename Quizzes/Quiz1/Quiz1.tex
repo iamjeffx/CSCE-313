@@ -118,23 +118,46 @@ False. Efficiency is the main goal of an OS. If an OS was slow, it would not be 
 {\bf 20.} After handling a fault successfully, the CPU goes (when it does go back) to the instruction
 immediately after the faulting one
 
-
+True. Faults are exceptions that arre unintentional but ultimately recoverable. If the OS is able to recover from the fault, control will be given back to the program and it will execute the next instruction normally. 
 
 {\bf 21.} Interrupts are asynchronous events
+
+True. There are synchronous and asynchronous exceptions and asynchronous exceptions are also known as interrupts since they do not depend on sequential states of the program but rather something external. 
 
 {\bf 22.} Memory limit protection (within a private address space using base and bound) is
 implemented in the hardware instead of software
 
+True. 
+
 {\bf 23.} Memory limit protection checks are only performed in the User mode
+
+True. The CPU checks all memory access in user mode. 
 
 {\bf 24.} Divide by 0 is an example of a fault
 
+False. A divide-by-0 zero is an example of an abort since it is unrecoverable. Faults can be recovered from it the OS is able to properly handle it. 
+
 {\bf 25.} Multiprogramming can be effective even with one single-core CPU
+
+True. Multiprogramming allows multiple programs to be run asynchronously instead of sequentially which can dramatically increase throughput since when one program needs the IO or doesn't need the CPU, the OS can swap that program out of the CPU and put another program that needs the CPU to run. This allows the CPU to not be idle as much as it isn't waiting for programs to run sequentially and can run programs out of order. 
 
 {\bf 26.} [10 pts] Define multiprogramming. How is this better than sequential program execution?
 
 Multiprogramming allows for asynchronous pipelining. This allows programs to be run out of order instead of the order than they come in (sequentially). Multiprogramming is much better than sequential program execution because it makes the CPU as busy as possible resulting in a higher throughput. 
 
 {\bf 27.} [10 pts] Define time-sharing. Can you combine time-sharing with multiprogramming?
+
+Time-sharing allows each program some fixed amount of time with thee CPU. The time limit each program has is called a time-quantum. After the time-quantum is reached, the current program saves its state and gets kicked out while the next program gets loaded and ran. Time-sharing can be implemented with multiprogramming. 
+
+{\bf 28.} [10 pts] Say you are running a program along with many other programs in a modern computer. For some reason, your program runs into a deadlock and never comes out of that. How does the OS deal with such deadlock? How about infinite loops? How does the OS detect, if at all, such cases?
+
+This problem can be solved with time-sharing. If time-sharing was never implemented, then if an infinite loop or deadlock occurs, then that program would run forever and no operation can stop the program. However, since time-sharing only allows each program a limited amount of time with the CPU, infinite loops and deadlocks can be broken when the time-quantum is up for that specific program. A deadlock can be detected by forming a resource-allocation graph and if there exists a cycle within the graph then there will be a deadlock. To terminate a deadlock, the OS can kill the processes in the deadlock and continue normal program function. For infinite loops, since not all infinite loops can be detected, the best the OS can do is provide resources in the case an infinite loop occurs. The best an OS can do is terminate the program after some specific amount of time. 
+
+{\bf 29.} [5 pts] Which of the following are privileged operations allowed only in Kernel mode?
+
+{\bf a)}	Modifying the page table entries:	
+
+This is a privileged instruction since it involves modifying data in memory. If the user programs were allowed access to modify memory, it could harmfully delete or add memory in places it shouldn't be allowed to. 
+
 
 \end{document}
