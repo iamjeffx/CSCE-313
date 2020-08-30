@@ -35,7 +35,7 @@ void getnDataPoints(FIFORequestChannel &chan, int n, int patient) {
     outfile.close();
 }
 
-void getDataFromFile(FIFORequestChannel &chan, string file) {
+void getDataFromFile(FIFORequestChannel &chan, string file, int capacity) {
     ofstream outfile("./received/" + file, ios::out | ios::binary);
 
     filemsg f(0, 0);
@@ -51,10 +51,10 @@ void getDataFromFile(FIFORequestChannel &chan, string file) {
 
     cout << "Length of file: " << fileLength << endl;
 
-    char* databuf = new char[MAX_MESSAGE];
+    char* databuf = new char[capacity];
     while(offset < fileLength) {
-        if(fileLength - offset >= MAX_MESSAGE) {
-            length = MAX_MESSAGE;
+        if(fileLength - offset >= capacity) {
+            length = capacity;
         } else {
             length = fileLength - offset;
         }
@@ -81,6 +81,7 @@ int main(int argc, char *argv[]){
     double time = -1;
     int ecg = -1;
     int cap = -1;
+    int capacity = MAX_MESSAGE;
     string file = "";
     bool newChan = false;
     MESSAGE_TYPE c = NEWCHANNEL_MSG;
@@ -112,6 +113,21 @@ int main(int argc, char *argv[]){
 
     // Case handler for each flag
     double r;
+    if(cap != -1) {
+        capacity = cap;
+    }
+    if(newChan) {
+        chan.cwrite(&c, sizeof(MESSAGE_TYPE));
+        cout << "New channel created" << endl;
+        char *newc = new char[MAX_MESSAGE];
+        chan.cread(newc, sizeof(MAX_MESSAGE));
+        cout << newc << endl;
+        FIFORequestChannel chan2(newc, FIFORequestChannel::CLIENT_SIDE);
+
+        MESSAGE_TYPE m1 = QUIT_MSG;
+        chan2.cwrite(&m1, sizeof(MESSAGE_TYPE));
+        cout << "Channel 2 closed" << endl;
+    }
     if(patient != -1 && time != -1 && ecg != -1) {
         datamsg d(patient, time, ecg);
         chan.cwrite(&d, sizeof(datamsg));
@@ -123,16 +139,8 @@ int main(int argc, char *argv[]){
         getnDataPoints(chan, 1000, patient);
     }
     if(file != "") {
-        getDataFromFile(chan, file);
+        getDataFromFile(chan, file, capacity);
     }
-//    if(newChan) {
-//        chan.cwrite(&c, sizeof(MESSAGE_TYPE));
-//        cout << "New channel created" << endl;
-//        char* newc = new char[MAX_MESSAGE];
-//        chan.cread(newc, sizeof(MAX_MESSAGE));
-//        cout << newc << endl;
-//    }
-
 
     // closing the channel
     MESSAGE_TYPE m = QUIT_MSG;
