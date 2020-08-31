@@ -305,7 +305,7 @@ In order for us to be able to handle nested interrupts, all interrupts must be p
 
 {\bf b.} [3 pts]: Can you interchange steps 2 and 3? Why or why not?
 
-Steps 2 and 3 cannot be interchanged. This is because step 3 depends on the completion of step 2. We can copy the memory values for PC, SP and the flags into the KIS if we are not in the kernel mode. Therefore, if we try to copy all the data and then switch into kernel mode, the memory wouldn't copy because the user mode doesn't have the authorization to perform kernel operations. 
+Steps 2 and 3 can be interchanged. This is because step 3 doesn't depends on the completion of step 2. We can copy the memory values for PC, SP and the flags into the KIS despite the mode because the copying is done in the hardware.
 
 {\bf c.} [2 pts]: Can we interchange step 1 with step 2? Why or why not?
 
