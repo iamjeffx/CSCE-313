@@ -1,8 +1,9 @@
-/*
-    Tanzir Ahmed
-    Department of Computer Science & Engineering
-    Texas A&M University
-    Date  : 2/8/20
+/** PA1
+ * Jeffrey Xu
+ * 09/06/2020
+ * jeffreyxu@tamu.edu
+ *
+ * Client-side of server
  */
 #include<sys/wait.h>
 #include "common.h"
@@ -101,91 +102,94 @@ void getDataFromFile(FIFORequestChannel &chan, string file, int capacity) {
 }
 
 int main(int argc, char *argv[]){
+    // Flag values
+    int patient = -1;
+    double time = -1;
+    int ecg = -1;
+    char* cap = "";
+    int capacity = MAX_MESSAGE;
+    string file = "";
+    bool newChan = false;
+    MESSAGE_TYPE c = NEWCHANNEL_MSG;
+    stringstream str;
+    int opt;
+
+    // Get all args
+    while ((opt = getopt(argc, argv, "m:p:t:f:e:c")) != -1) {
+        switch (opt) {
+            case 'm':
+                cap = optarg;
+                break;
+            case 'p':
+                patient = atoi(optarg);
+                break;
+            case 't':
+                time = atof(optarg);
+                break;
+            case 'f':
+                file = optarg;
+                break;
+            case 'e':
+                ecg = atoi(optarg);
+                break;
+            case 'c':
+                newChan = true;
+                break;
+        }
+    }
+
+    // Child process to execute server
     int pid = fork();
     if(pid == 0) {
-        cout << "Child Process" << endl;
-        char *args[argc + 1];
+        char* args[4];
         args[0] = "./server";
-        for(int i = 1; i < argc; i++) {
-            args[i] = argv[i];
+        if(cap != "") {
+            args[1] = "-m";
+            args[2] = cap;
+            args[3] = NULL;
+        } else {
+            args[1] = NULL;
         }
-        args[argc] = NULL;
         execvp("./server", args);
     } else {
-        cout << "Parent Process" << endl;
-
         FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
-
-        // Flag values
-        int patient = -1;
-        double time = -1;
-        int ecg = -1;
-        int cap = -1;
-        int capacity = MAX_MESSAGE;
-        string file = "";
-        bool newChan = false;
-        MESSAGE_TYPE c = NEWCHANNEL_MSG;
-        stringstream str;
-
-        // Get values/flags from argv
-        for(int i = 0; i < argc; i++) {
-            if(strcmp(argv[i], "-m") == 0) {
-                str << argv[++i]; str >> cap;
-                cout << "Buffer capacity changed to " << cap << endl;
-            } else if(strcmp(argv[i], "-c") == 0) {
-                newChan = true;
-                cout << "Create new channel" << endl;
-            } else if(strcmp(argv[i], "-p") == 0) {
-                str << argv[++i]; str >> patient;
-                cout << "Get data from patient " << patient << endl;
-            } else if(strcmp(argv[i], "-t") == 0) {
-                str << argv[++i]; str >> time;
-                cout << "Get data from time " << time << endl;
-            } else if(strcmp(argv[i], "-e") == 0) {
-                str << argv[++i]; str >> ecg;
-                cout << "Get data from ecg " << ecg << endl;
-            } else if(strcmp(argv[i], "-f") == 0) {
-                file = argv[++i];
-                cout << "Get data from file " << file << endl;
-            }
-            stringstream().swap(str);
-        }
 
         // Case handler for each flag
         double r;
-        if(cap != -1) {
-            capacity = cap;
+        if(cap != "") {
+            capacity = atoi(cap);
         }
         if(newChan) {
             chan.cwrite(&c, sizeof(MESSAGE_TYPE));
             char *newc = new char[MAX_MESSAGE];
             chan.cread(newc, MAX_MESSAGE);
-            cout << newc << endl;
             FIFORequestChannel chan2(newc, FIFORequestChannel::CLIENT_SIDE);
             cout << "Channel 2 created" << endl;
 
-            datamsg test(1, 0, 1);
-            double result;
-            chan2.cwrite(&test, sizeof(datamsg));
-            chan2.cread(&result, sizeof(double));
-            cout << result << endl;
+            if(patient != -1) {
+                getnDataPoints(chan2, 1000, patient, ecg, time);
+            }
+            if(file != "") {
+                getDataFromFile(chan2, file, capacity);
+            }
 
             MESSAGE_TYPE m1 = QUIT_MSG;
             chan2.cwrite(&m1, sizeof(MESSAGE_TYPE));
             cout << "Channel 2 closed" << endl;
-        }
-        if(patient != -1) {
-            getnDataPoints(chan, 1000, patient, ecg, time);
-        }
-        if(file != "") {
-            getDataFromFile(chan, file, capacity);
+        } else {
+            if(patient != -1) {
+                getnDataPoints(chan, 1000, patient, ecg, time);
+            }
+            if(file != "") {
+                getDataFromFile(chan, file, capacity);
+            }
         }
 
+        cout << "Everything finished" << endl;
         // closing the channel
         MESSAGE_TYPE m = QUIT_MSG;
         chan.cwrite(&m, sizeof (MESSAGE_TYPE));
         cout << "Channel closed" << endl;
+        wait(0);
     }
-
-
 }
