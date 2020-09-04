@@ -1,8 +1,9 @@
-/*
-    Tanzir Ahmed
-    Department of Computer Science & Engineering
-    Texas A&M University
-    Date  : 2/8/20
+/** PA1
+ * Jeffrey Xu
+ * 09/06/2020
+ * jeffreyxu@tamu.edu
+ *
+ * Client-side of server
  */
 #include<sys/wait.h>
 #include "common.h"
@@ -105,40 +106,46 @@ int main(int argc, char *argv[]){
     int patient = -1;
     double time = -1;
     int ecg = -1;
-    int cap = -1;
+    char* cap = "";
     int capacity = MAX_MESSAGE;
     string file = "";
     bool newChan = false;
     MESSAGE_TYPE c = NEWCHANNEL_MSG;
     stringstream str;
+    int opt;
 
-    // Get values/flags from argv
-    for(int i = 0; i < argc; i++) {
-        if(strcmp(argv[i], "-m") == 0) {
-            str << argv[++i]; str >> cap;
-        } else if(strcmp(argv[i], "-c") == 0) {
-            newChan = true;
-        } else if(strcmp(argv[i], "-p") == 0) {
-            str << argv[++i]; str >> patient;
-        } else if(strcmp(argv[i], "-t") == 0) {
-            str << argv[++i]; str >> time;
-        } else if(strcmp(argv[i], "-e") == 0) {
-            str << argv[++i]; str >> ecg;
-        } else if(strcmp(argv[i], "-f") == 0) {
-            file = argv[++i];
+    // Get all args
+    while ((opt = getopt(argc, argv, "m:p:t:f:e:c")) != -1) {
+        switch (opt) {
+            case 'm':
+                cap = optarg;
+                break;
+            case 'p':
+                patient = atoi(optarg);
+                break;
+            case 't':
+                time = atof(optarg);
+                break;
+            case 'f':
+                file = optarg;
+                break;
+            case 'e':
+                ecg = atoi(optarg);
+                break;
+            case 'c':
+                newChan = true;
+                break;
         }
-        stringstream().swap(str);
     }
 
+    // Child process to execute server
     int pid = fork();
     if(pid == 0) {
         char* args[4];
         args[0] = "./server";
-        if(cap != -1) {
+        if(cap != "") {
             args[1] = "-m";
-            stringstream oss;
-            oss << cap;
-            oss >> args[2];
+            args[2] = cap;
             args[3] = NULL;
         } else {
             args[1] = NULL;
@@ -149,8 +156,8 @@ int main(int argc, char *argv[]){
 
         // Case handler for each flag
         double r;
-        if(cap != -1) {
-            capacity = cap;
+        if(cap != "") {
+            capacity = atoi(cap);
         }
         if(newChan) {
             chan.cwrite(&c, sizeof(MESSAGE_TYPE));
@@ -178,7 +185,7 @@ int main(int argc, char *argv[]){
             }
         }
 
-
+        cout << "Everything finished" << endl;
         // closing the channel
         MESSAGE_TYPE m = QUIT_MSG;
         chan.cwrite(&m, sizeof (MESSAGE_TYPE));
