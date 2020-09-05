@@ -2,6 +2,13 @@
 using namespace std;
 
 int main() {
-    cout << "Hello, World!" << endl;
+    while(true) {
+        cout << "Shelldon Cooper$ ";
+        string line;
+        getline(cin, line);
+        if(line == string("Exit")) {
+            break;
+        }
+    }
     return 0;
 }
