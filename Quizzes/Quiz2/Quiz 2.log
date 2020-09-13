@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.16)  13 SEP 2020 15:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.16)  13 SEP 2020 16:03
 entering extended mode
 **"./Quiz 2.tex"
 ("Quiz 2.tex"
@@ -254,65 +254,68 @@ G,.JBIG2,.JB2,.eps]
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 32.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 51
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 46
 .
  ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
 
  ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
 
  ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/jeffr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<./images/313Quiz2P5.png, id=7, 240.9pt x 117.43875pt>
+<./images/313Quiz2P5.png, id=9, 240.9pt x 117.43875pt>
 File: ./images/313Quiz2P5.png Graphic file (type png)
 <use ./images/313Quiz2P5.png>
-Package pdftex.def Info: ./images/313Quiz2P5.png  used on input line 95.
+Package pdftex.def Info: ./images/313Quiz2P5.png  used on input line 99.
 (pdftex.def)             Requested size: 227.62964pt x 113.8115pt.
-<./images/P6.png, id=8, 438.8897pt x 276.28218pt>
+<./images/P6.png, id=10, 438.8897pt x 276.28218pt>
 File: ./images/P6.png Graphic file (type png)
 <use ./images/P6.png>
-Package pdftex.def Info: ./images/P6.png  used on input line 101.
+Package pdftex.def Info: ./images/P6.png  used on input line 105.
 (pdftex.def)             Requested size: 241.85216pt x 170.71562pt.
+
+[2 <./images/313Quiz2P5.png>]
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 1
-07.
+11.
 
 ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 111.
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--112
+Underfull \hbox (badness 10000) in paragraph at lines 110--116
 
  []
 
-[2 <./images/313Quiz2P5.png> <./images/P6.png>] [3] ("Quiz 2.aux") ) 
+[3 <./images/P6.png>] ("Quiz 2.aux") ) 
 Here is how much of TeX's memory you used:
  2909 strings out of 492450
  40173 string characters out of 3120005
- 116085 words of memory out of 3000000
+ 118085 words of memory out of 3000000
  7212 multiletter control sequences out of 15000+200000
  11814 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,37p,433b,189s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/j
-effr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/je
-ffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb
-><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw
-/times/utmb8a.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/urw/times/utmr8a.pfb>
-Output written on "Quiz 2.pdf" (3 pages, 94244 bytes).
+ 55i,6n,37p,822b,189s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/jeffr/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/jeffr/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/jeffr/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/jeffr/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
+Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb>
+<C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.
+pfb>
+Output written on "Quiz 2.pdf" (3 pages, 104528 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
+ 35 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
