@@ -113,7 +113,7 @@ int main() {
         // Check for background process and exit statement
         if(line == string("Exit")) {
             cout << "Shell finished" << endl;
-            break;
+            return 0;
         }
 //        if(line[line.length() - 1] == '&') {
 //            bg = true;
@@ -129,21 +129,18 @@ int main() {
             if(!pid) {
                 if(i < pipes.size() - 1) {
                     dup2(fd[1], 1);
-                } else {
-                    dup2(outBackup, 1);
                 }
                 execute(pipes.at(i));
             } else {
                 if(i == pipes.size() - 1) {
                     waitpid(pid, 0, 0);
-                    close(fd[0]);
-                    close(fd[1]);
-                } else {
-                    dup2(fd[0], 0);
-                    close(fd[1]);
                 }
+                close(fd[1]);
+                dup2(fd[0], 0);
             }
         }
+//        close(fd[0]);
+//        close(fd[1]);
         dup2(inBackup, 0);
         dup2(outBackup, 1);
 
