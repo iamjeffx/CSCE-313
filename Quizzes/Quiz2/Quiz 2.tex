@@ -89,9 +89,103 @@ Please draw one possible trace of these 3 processes running together in the CPU.
 \end{tabular}
 \end{center}
 
+Below is a plausible trace of the following processes.
+
+\noindent
+1\tab 5000\\
+2\tab 5001\\
+3\tab 5002\\
+4\tab 5003\\
+5\tab 5004\\
+---I/O---\\
+6\tab 100\\
+7\tab 101\\
+8\tab 102\\
+9\tab 103\\
+10\tab 8000\\
+11\tab 8001\\
+12\tab 8002\\
+13\tab 8003\\
+---I/O---\\
+14\tab 100\\
+15\tab 101\\
+16\tab 102\\
+17\tab 103\\
+18\tab 12000\\
+19\tab 12001\\
+---I/O---\\
+20\tab 100\\
+21\tab 101\\
+22\tab 102\\
+23\tab 103\\
+24\tab 5005\\
+---I/O---\\
+25\tab 100\\
+26\tab 101\\
+27\tab 102\\
+28\tab 103\\
+29\tab 8004\\
+30\tab 8005\\
+31\tab 8006\\
+---I/O---\\
+32\tab 100\\
+33\tab 101\\
+34\tab 102\\
+35\tab 103\\
+36\tab 12002\\
+37\tab 12003\\
+38\tab 12004\\
+39\tab 12005\\
+40\tab 12006\\
+---I/O---\\
+41\tab 100\\
+42\tab 101\\
+43\tab 102\\
+44\tab 103\\
+45\tab 5006\\
+46\tab 5007\\
+47\tab 5008\\
+---I/O---\\
+48\tab 100\\
+49\tab 101\\
+50\tab 102\\
+51\tab 103\\
+52\tab 12007\\
+53\tab 12008\\
+---I/O---\\
+54\tab 100\\
+55\tab 101\\
+56\tab 102\\
+57\tab 103\\
+58\tab 5009\\
+59\tab 5010\\
+60\tab 5011\\
+61\tab 5012\\
+62\tab 5013\\
+---Timeout---\\
+63\tab 100\\
+64\tab 101\\
+65\tab 102\\
+66\tab 103\\
+67\tab 12009\\
+68\tab 12010\\
+69\tab 12011\\
+70\tab 12012\\
+---I/O---\\
+71\tab 100\\
+72\tab 101\\
+73\tab 102\\
+74\tab 103\\
+75\tab 5014\\
+---I/O---\\
+
 {\bf 3.} [5 pts] What is the difference between the "New" state and the "Ready to Run" state in the process diagram?
 
+The "New" state describes a program that is currently getting loaded into the main memory. During the process of loading the program, the process is in the "New" state. During the "New" state, the OS must check that there is enough space for the new process and allocate space for the PCB in the main memory. When the process is finished loading, the process goes from the "New" state to the "Ready" state where it gets put into a queue of other "Ready" processes. 
+
 {\bf 4.} [5 pts] Is a transition from the "Blocked" state to directly to the "Exit" state possible in the process state diagram? How?
+
+It is possible to transition from the "Blocked" state to the "Exit" state. This mainly happens when a parent process kills the child process when the child process is in the "Blocked" state. This could also happen when the parent process itself is completely terminated thus terminating all of its child processes which, if any child processes are in the "Blocked" state waiting for an I/O event, will move all processes to the "Exit" state even if it is in the "Blocked" state. Faults can also cause the process to go from the "Blocked" state to the "Exit" state. 
 
 {\bf 5.} [10 pts] Assume that the following physical memory is full with already allocated 5 pages as shown below (i.e., it is 20KB in capacity). Describe what happens if process 2 wants to allocate and use another page. What changes in the page tables and the physical memory? 
 
@@ -99,10 +193,12 @@ Please draw one possible trace of these 3 processes running together in the CPU.
 \includegraphics[width=8cm, height=4cm]{313Quiz2P5}
 \end{center}
 
+Since the physical memory has no more space for new pages, when process 2 tries to allocate and use another page, a page fault will occur. This means that one of the frames that process 2 is using must be kicked out. If we use LRU caching and assume that page 0 was the least recently used page, we would evacuate page 0 (frame 1) back to the disk and load the new page (page 2) into the newly evacuated spot. Now the page table will map page 0 to the disk and page 2 to frame 1. 
+
 {\bf 6.} [25 pts] Draw the Descriptor Table (DT) and the File Table (FT) for each possible process just after executing the lines 2, 5 and 10 and explain what you see in the standard output and {\bf file.txt} along the way. 
 
 \begin{center}
-\includegraphics[width=8.5cm, height=6cm]{P6}
+\includegraphics[width=9cm, height=6cm]{P6}
 \end{center}
 
 {\bf 7.} [25 pts] Please explain the output of the following program using a process tree diagram as shown in Lecture 4 page 23. Assuming the main process's ID is 1000, explain the order of process creation (in fact, the number itself should show what order the processes are created). Also explain what you see in the standard output. Are different outputs possible for this program? Why or why not? 
