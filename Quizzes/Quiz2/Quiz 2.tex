@@ -201,6 +201,24 @@ Since the physical memory has no more space for new pages, when process 2 tries 
 \includegraphics[width=9cm, height=6cm]{P6}
 \end{center}
 
+At line 2, fd will take the value of 3 and the file position of file.txt will be 6 since line 2 writes "Hello " and stdout would show nothing. The file-table and descriptor table is shown below. 
+
+\begin{center}
+\includegraphics[width=8cm, height=4cm]{P6Line2}
+\end{center}
+
+At line 5, a child and parent process has been created due to the fork function call. Within the child process, the stdout file descriptor will point to file.txt. After the call for line 5, file.txt will have "Hello Mars, I am here!!" as its contents as the stdout has been redirected. 
+
+\begin{center}
+\includegraphics[width=8cm, height=8cm]{P6Line5}
+\end{center}
+
+At line 10, no redirection is done with stdout, so the cout statement would print to the terminal. Line 8 changes the file position to the beginning of the file. The standard output would show "Mars is great" and line 10 would overwrite the first 5 characters of file.txt. The contents in file.txt would be "Hola  Mars is great". 
+
+\begin{center}
+\includegraphics[width=8cm, height=8cm]{P6Line10}
+\end{center}
+
 {\bf 7.} [25 pts] Please explain the output of the following program using a process tree diagram as shown in Lecture 4 page 23. Assuming the main process's ID is 1000, explain the order of process creation (in fact, the number itself should show what order the processes are created). Also explain what you see in the standard output. Are different outputs possible for this program? Why or why not? 
 
 \noindent
@@ -209,5 +227,7 @@ Since the physical memory has no more space for new pages, when process 2 tries 
 \tab{\color{violet}if}(i$<${\color{Green}2})\\
 \tab\tab{\color{RawSienna}wait}({\color{Green}0});\\
 \tab cout $<<$ {\color{Maroon}"ID="} $<<$ {\color{RawSienna}getpid}() $<<$ endl;\\
+
+
 
 \end{document}
