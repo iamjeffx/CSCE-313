@@ -213,7 +213,7 @@ At line 5, a child and parent process has been created due to the fork function 
 \includegraphics[width=8cm, height=8cm]{P6Line5}
 \end{center}
 
-At line 10, no redirection is done with stdout, so the cout statement would print to the terminal. Line 8 changes the file position to the beginning of the file. The standard output would show "Mars is great" and line 10 would overwrite the first 5 characters of file.txt. The contents in file.txt would be "Hola  Mars is great". 
+At line 10, no redirection is done with stdout, so the cout statement would print to the terminal. Line 8 changes the file position to the beginning of the file. The standard output would show "Mars is great" and line 10 would overwrite the first 5 characters of file.txt. file.txt would show "Hola  Mars is great" (2 spaces after Hola). 
 
 \begin{center}
 \includegraphics[width=8cm, height=8cm]{P6Line10}
@@ -227,7 +227,14 @@ At line 10, no redirection is done with stdout, so the cout statement would prin
 \tab{\color{violet}if}(i$<${\color{Green}2})\\
 \tab\tab{\color{RawSienna}wait}({\color{Green}0});\\
 \tab cout $<<$ {\color{Maroon}"ID="} $<<$ {\color{RawSienna}getpid}() $<<$ endl;\\
+\}
 
+\begin{center}
+\includegraphics[width=12cm, height=12cm]{P7}
+\end{center}
 
+The tree-diagram above shows the order of creation of processes. The items in red show the order in which the print statements occur. The first two forks in process 1000, since wait was called, the parent waited for the child processes to finish before continuing running the rest of its code. After the first two forks, the last two forks didn't wait and simply ran their code before running the child process code. This can be seen through the first two forks as the process ids are incremented in a Depth-First Search manner while the last two forks incremented the process ids in a Breadth-First Search manner. 
+
+The output from this program could vary due to a multitude of reasons. First, the scheduler algorithm could vary leading to different memory allocation which will give different process ids. Also, different systems and different system states could cause different reactions to fork calls. If no wait is present, then either the parent or the child could run first and this is determined at runtime making the output non-deterministic. For this problem, it was assumed that when no wait is called, the parent runs first, then the child. 
 
 \end{document}
