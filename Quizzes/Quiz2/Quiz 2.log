@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.16)  13 SEP 2020 16:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.16)  16 SEP 2020 11:34
 entering extended mode
 **"./Quiz 2.tex"
 ("Quiz 2.tex"
@@ -271,51 +271,72 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/jeffr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<./images/313Quiz2P5.png, id=9, 240.9pt x 117.43875pt>
+Underfull \hbox (badness 10000) in paragraph at lines 94--181
+
+ []
+
+[2] [3] [4]
+<./images/313Quiz2P5.png, id=18, 240.9pt x 117.43875pt>
 File: ./images/313Quiz2P5.png Graphic file (type png)
 <use ./images/313Quiz2P5.png>
-Package pdftex.def Info: ./images/313Quiz2P5.png  used on input line 99.
+Package pdftex.def Info: ./images/313Quiz2P5.png  used on input line 193.
 (pdftex.def)             Requested size: 227.62964pt x 113.8115pt.
-<./images/P6.png, id=10, 438.8897pt x 276.28218pt>
+<./images/P6.png, id=19, 438.8897pt x 276.28218pt>
 File: ./images/P6.png Graphic file (type png)
 <use ./images/P6.png>
-Package pdftex.def Info: ./images/P6.png  used on input line 105.
-(pdftex.def)             Requested size: 241.85216pt x 170.71562pt.
-
-[2 <./images/313Quiz2P5.png>]
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 1
-11.
+Package pdftex.def Info: ./images/P6.png  used on input line 201.
+(pdftex.def)             Requested size: 256.0764pt x 170.71562pt.
+ [5 <./images/313Quiz2P5.png>]
+<./images/P6Line2.png, id=23, 407.72325pt x 185.493pt>
+File: ./images/P6Line2.png Graphic file (type png)
+<use ./images/P6Line2.png>
+Package pdftex.def Info: ./images/P6Line2.png  used on input line 207.
+(pdftex.def)             Requested size: 227.62044pt x 113.81003pt.
+<./images/P6Line5.png, id=25, 437.83575pt x 408.92775pt>
+File: ./images/P6Line5.png Graphic file (type png)
+<use ./images/P6Line5.png>
+Package pdftex.def Info: ./images/P6Line5.png  used on input line 213.
+(pdftex.def)             Requested size: 227.62245pt x 227.61899pt.
+ [6 <./images/P6.png> <./images/P6Line2.png>]
+<./images/P6Line10.png, id=30, 439.6425pt x 401.70074pt>
+File: ./images/P6Line10.png Graphic file (type png)
+<use ./images/P6Line10.png>
+Package pdftex.def Info: ./images/P6Line10.png  used on input line 219.
+(pdftex.def)             Requested size: 227.61586pt x 227.62332pt.
+ [7 <./images/P6Line5.png> <./images/P6Line10.png>]
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 2
+25.
 
 ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 111.
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--116
-
- []
-
-[3 <./images/P6.png>] ("Quiz 2.aux") ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 225.
+<./images/P7.png, id=37, 520.94624pt x 444.4605pt>
+File: ./images/P7.png Graphic file (type png)
+<use ./images/P7.png>
+Package pdftex.def Info: ./images/P7.png  used on input line 233.
+(pdftex.def)             Requested size: 341.43294pt x 341.44893pt.
+[8 <./images/P7.png>] [9] ("Quiz 2.aux") ) 
 Here is how much of TeX's memory you used:
- 2909 strings out of 492450
- 40173 string characters out of 3120005
- 118085 words of memory out of 3000000
- 7212 multiletter control sequences out of 15000+200000
+ 2938 strings out of 492450
+ 40691 string characters out of 3120005
+ 119085 words of memory out of 3000000
+ 7241 multiletter control sequences out of 15000+200000
  11814 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,6n,37p,822b,189s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/jeffr/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/jeffr/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/jeffr/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/jeffr/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
-Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb>
-<C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.
-pfb>
-Output written on "Quiz 2.pdf" (3 pages, 104528 bytes).
+{C:/Users/jeffr/AppData/Local/Program
+s/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/jeffr/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/jeffr/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/jef
+fr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.
+pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utm
+r8a.pfb>
+Output written on "Quiz 2.pdf" (9 pages, 244827 bytes).
 PDF statistics:
- 35 PDF objects out of 1000 (max. 8388607)
+ 64 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
