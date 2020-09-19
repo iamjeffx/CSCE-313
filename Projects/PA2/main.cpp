@@ -94,6 +94,9 @@ bool charInString(string line, string element) {
 
 bool elementInVector(vector<string>& tokens, string element) {
     for(size_t i = 0; i < tokens.size(); i++) {
+        if(tokens.at(i)[0] == '\'' || tokens.at(i)[0] == '\"') {
+            continue;
+        }
         if(tokens.at(i) == string(element) || charInString(tokens.at(i), element)) {
             return true;
         }
@@ -139,6 +142,26 @@ vector<vector<string>> splitVectorIO(vector<string>& tokens, string delim) {
     return result;
 }
 
+void removeQuotes(vector<vector<string>>& args) {
+    for(size_t i = 0; i < args.size(); i++) {
+        for(size_t j = 0; j < args.at(i).size(); j++) {
+            if(args.at(i).at(j)[0] == '\'' || args.at(i).at(j)[0] == '\"') {
+                string temp = args.at(i).at(j).substr(1, args.at(i).at(j).size() - 2);
+                args.at(i).at(j) = temp;
+            }
+        }
+    }
+}
+
+void removeQuotesVector(vector<string>& args) {
+    for(size_t i = 0; i < args.size(); i++) {
+        if(args.at(i)[0] == '\"' || args.at(i)[0] == '\'') {
+            string temp = args.at(i).substr(1, args.at(i).size() - 2);
+            args.at(i) = temp;
+        }
+    }
+}
+
 void runCommands(vector<vector<string>> tokens, string path, bool bg, vector<int>& bgs) {
     // Backup fd for stdin and stdout
     int inBackup = dup(0);
@@ -177,32 +200,6 @@ void runCommands(vector<vector<string>> tokens, string path, bool bg, vector<int
                 close(fdRedirectIn);
             }
         }
-//        if(elementInVector(args, ">") && !elementInVector(args, "<")) {
-//            vector<vector<string>> out = splitVectorIO(args, ">");
-//            int pid = fork();
-//            if(!pid) {
-//                fdRedirectOut = open(out.at(1).at(0).c_str(), O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
-//                dup2(fdRedirectOut, 1);
-//                const char** arguments = vecToChar(out.at(0));
-//                execvp(arguments[0], (char**)arguments);
-//            } else {
-//                waitpid(pid, 0, 0);
-//                close(fdRedirectOut);
-//            }
-//        }
-//        if(!elementInVector(args, ">") && elementInVector(args, "<")) {
-//            vector<vector<string>> in = splitVectorIO(args, "<");
-//            int pid = fork();
-//            if(!pid) {
-//                fdRedirectIn = open(in.at(1).at(0).c_str(), O_RDONLY | S_IRUSR);
-//                dup2(fdRedirectIn, 0);
-//                const char** arguments = vecToChar(in.at(0));
-//                execvp(arguments[0], (char**)arguments);
-//            } else {
-//                waitpid(pid, 0, 0);
-//                close(fdRedirectIn);
-//            }
-//        }
 
         // Create pipe
         int fd[2];
@@ -245,6 +242,7 @@ void runCommands(vector<vector<string>> tokens, string path, bool bg, vector<int
                     args = temp;
                 }
             }
+            removeQuotesVector(args);
             const char** arguments = vecToChar(args);
             execvp(arguments[0], (char**)arguments);
             bgs.push_back(getpid());
@@ -436,17 +434,6 @@ vector<vector<string>> parsePipeProcesses(vector<string>& tokens) {
     return args;
 }
 
-void removeQuotes(vector<vector<string>>& args) {
-    for(size_t i = 0; i < args.size(); i++) {
-        for(size_t j = 0; j < args.at(i).size(); j++) {
-            if(args.at(i).at(j)[0] == '\'' || args.at(i).at(j)[0] == '\"') {
-                string temp = args.at(i).at(j).substr(1, args.at(i).at(j).size() - 2);
-                args.at(i).at(j) = temp;
-            }
-        }
-    }
-}
-
 int main() {
     const int PATHMAX = 1000;
     char path[PATHMAX];
@@ -479,7 +466,6 @@ int main() {
         // Parse command
         vector<string> tokens = splitOnQuotes(line);
         vector<vector<string>> pipes = parsePipeProcesses(tokens);
-        removeQuotes(pipes);
 
         // Execute command
         runCommands(pipes, previousPath, bg, bgs);
