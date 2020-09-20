@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage[dvipsnames]{xcolor}
+
+\graphicspath{ {./images/} }
+
+\newcommand{\NOT}{\neg}
+\newcommand{\AND}{\wedge}
+\newcommand{\OR}{\vee}
+\newcommand{\XOR}{\oplus}
+\newcommand{\IMPLIES}{\rightarrow}
+\newcommand{\IFF}{\leftrightarrow}
+\newcommand{\E}{\exists}
+\newcommand{\A}{\forall}
+
+\setlength{\parskip}{.1in}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\begin{document}
+
+\begin{center}
+
+{\bf
+CSCE 313\\
+PA2 Report\\
+Jeffrey Xu\\
+527008162\\
+09/20/20\\
+}
+
+\end{center}
+
+\section{Shell Structure}
+
+Everything for the shell could've been coded in the main function, however due to the size of this project, it was decided to modularize everything. Processes like parsing, executing commands and checking for background processes were put into functions that allowed for more streamline code. 
+
+Within the shell, a \emph{while} loop continously asks for user input until the input equals the exit token. 
+
+\end{document}
