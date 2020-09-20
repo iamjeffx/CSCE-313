@@ -1,0 +1,9 @@
+total 604
+drwxrwxr-x 3 osboxes osboxes   4096 Sep 14 21:42 cmake-build-debug
+-rw-rw-r-- 1 osboxes osboxes    107 Sep  5 12:29 CMakeLists.txt
+-rw-rw-r-- 1 osboxes osboxes  13400 Sep 18 20:02 main.cpp
+-rw-rw-r-- 1 osboxes osboxes 231504 Sep 18 20:02 main.o
+-rw-rw-r-- 1 osboxes osboxes    220 Sep 12 22:12 makefile
+-rwxrwxr-x 1 osboxes osboxes 334600 Sep 18 20:02 output.out
+-rw------- 1 osboxes osboxes      0 Sep 18 19:45 output.txt
+-rw------- 1 osboxes osboxes  19692 Sep 18 19:44 test.txt
