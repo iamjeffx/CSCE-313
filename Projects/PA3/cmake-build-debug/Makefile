@@ -224,6 +224,33 @@ RequestChannel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/RequestChannel.cpp.s
 .PHONY : RequestChannel.cpp.s
 
+SHMreqchannel.o: SHMreqchannel.cpp.o
+
+.PHONY : SHMreqchannel.o
+
+# target to build an object file
+SHMreqchannel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/SHMreqchannel.cpp.o
+.PHONY : SHMreqchannel.cpp.o
+
+SHMreqchannel.i: SHMreqchannel.cpp.i
+
+.PHONY : SHMreqchannel.i
+
+# target to preprocess a source file
+SHMreqchannel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/SHMreqchannel.cpp.i
+.PHONY : SHMreqchannel.cpp.i
+
+SHMreqchannel.s: SHMreqchannel.cpp.s
+
+.PHONY : SHMreqchannel.s
+
+# target to generate assembly for a file
+SHMreqchannel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/SHMreqchannel.cpp.s
+.PHONY : SHMreqchannel.cpp.s
+
 client.o: client.cpp.o
 
 .PHONY : client.o
@@ -323,6 +350,9 @@ help:
 	@echo "... RequestChannel.o"
 	@echo "... RequestChannel.i"
 	@echo "... RequestChannel.s"
+	@echo "... SHMreqchannel.o"
+	@echo "... SHMreqchannel.i"
+	@echo "... SHMreqchannel.s"
 	@echo "... client.o"
 	@echo "... client.i"
 	@echo "... client.s"

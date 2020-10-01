@@ -10,6 +10,7 @@
 #include "common.h"
 #include "FIFOreqchannel.h"
 #include "MQreqchannel.h"
+#include "SHMreqchannel.h";
 
 using namespace std;
 
@@ -180,7 +181,7 @@ int main(int argc, char *argv[]){
         else if(ipcMode == string("q"))
             chan = new MQRequestChannel("control", RequestChannel::CLIENT_SIDE);
         else if(ipcMode == string("s"))
-            ;
+            chan = new SHMRequestChannel("control", RequestChannel::CLIENT_SIDE, capacity);
 
         // Case handler for each flag
         if(cap != "") {
@@ -196,7 +197,7 @@ int main(int argc, char *argv[]){
             else if(ipcMode == "q")
                 chan2 = new MQRequestChannel(newc, RequestChannel::CLIENT_SIDE);
             else if(ipcMode == "s")
-                ;
+                chan2 = new SHMRequestChannel(newc, RequestChannel::CLIENT_SIDE, capacity);
             cout << "Channel 2 created" << endl;
 
             if(patient != -1) {

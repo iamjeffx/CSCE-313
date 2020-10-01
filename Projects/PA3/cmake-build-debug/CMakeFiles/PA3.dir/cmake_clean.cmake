@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/PA3.dir/FIFOreqchannel.cpp.o"
   "CMakeFiles/PA3.dir/MQreqchannel.cpp.o"
   "CMakeFiles/PA3.dir/RequestChannel.cpp.o"
+  "CMakeFiles/PA3.dir/SHMreqchannel.cpp.o"
   "CMakeFiles/PA3.dir/client.cpp.o"
   "CMakeFiles/PA3.dir/common.cpp.o"
   "CMakeFiles/PA3.dir/server.cpp.o"

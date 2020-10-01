@@ -100,6 +100,12 @@
 		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/RequestChannel.h">
 			<Option target="PA3"/>
 		</Unit>
+		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/SHMreqchannel.cpp">
+			<Option target="PA3"/>
+		</Unit>
+		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/SHMreqchannel.h">
+			<Option target="PA3"/>
+		</Unit>
 		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/client.cpp">
 			<Option target="PA3"/>
 		</Unit>

@@ -18,7 +18,7 @@ protected:
     int rfd;
 
     string s1, s2;
-    virtual int open_ipc(string _pipe_name, int mode) = 0;
+    virtual int open_ipc(string _pipe_name, int mode) {;};
 
 public:
     RequestChannel(const string _name, const Side _side) : my_side(_side), my_name(_name) {};

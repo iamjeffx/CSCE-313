@@ -8,16 +8,16 @@ using namespace std;
 /*--------------------------------------------------------------------------*/
 
 MQRequestChannel::MQRequestChannel(const string _name, const Side _side) : RequestChannel(_name, _side) {
-    s1 = "MQ_" + my_name + "1";
-    s2 = "MQ_" + my_name + "2";
+    s1 = "/MQ_" + my_name + "1";
+    s2 = "/MQ_" + my_name + "2";
 
     if (_side == SERVER_SIDE){
-        wfd = open_ipc(s1, O_WRONLY);
-        rfd = open_ipc(s2, O_RDONLY);
+        wfd = open_ipc(s1, O_RDWR|O_CREAT);
+        rfd = open_ipc(s2, O_RDWR|O_CREAT);
     }
     else{
-        rfd = open_ipc(s1, O_RDONLY);
-        wfd = open_ipc(s2, O_WRONLY);
+        rfd = open_ipc(s1, O_RDWR|O_CREAT);
+        wfd = open_ipc(s2, O_RDWR|O_CREAT);
     }
 }
 
@@ -30,7 +30,7 @@ MQRequestChannel::~MQRequestChannel(){
 }
 
 int MQRequestChannel::open_ipc(string _pipe_name, int mode){
-    int fd = (int)mq_open(_pipe_name.c_str(), O_RDWR | O_CREAT, 0600, 0);
+    int fd = (int)mq_open(_pipe_name.c_str(), mode, 0600, 0);
     if (fd < 0) {
         EXITONERROR(_pipe_name);
     }
@@ -38,7 +38,7 @@ int MQRequestChannel::open_ipc(string _pipe_name, int mode){
 }
 
 int MQRequestChannel::cread(void* msgbuf, int bufcapacity){
-    return mq_receive(rfd, (char *)msgbuf, bufcapacity, NULL);
+    return mq_receive(rfd, (char *)msgbuf, 8192, NULL);
 }
 
 int MQRequestChannel::cwrite(void* msgbuf, int len){
