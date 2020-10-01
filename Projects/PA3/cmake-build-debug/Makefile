@@ -170,6 +170,60 @@ FIFOreqchannel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/FIFOreqchannel.cpp.s
 .PHONY : FIFOreqchannel.cpp.s
 
+MQreqchannel.o: MQreqchannel.cpp.o
+
+.PHONY : MQreqchannel.o
+
+# target to build an object file
+MQreqchannel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/MQreqchannel.cpp.o
+.PHONY : MQreqchannel.cpp.o
+
+MQreqchannel.i: MQreqchannel.cpp.i
+
+.PHONY : MQreqchannel.i
+
+# target to preprocess a source file
+MQreqchannel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/MQreqchannel.cpp.i
+.PHONY : MQreqchannel.cpp.i
+
+MQreqchannel.s: MQreqchannel.cpp.s
+
+.PHONY : MQreqchannel.s
+
+# target to generate assembly for a file
+MQreqchannel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/MQreqchannel.cpp.s
+.PHONY : MQreqchannel.cpp.s
+
+RequestChannel.o: RequestChannel.cpp.o
+
+.PHONY : RequestChannel.o
+
+# target to build an object file
+RequestChannel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/RequestChannel.cpp.o
+.PHONY : RequestChannel.cpp.o
+
+RequestChannel.i: RequestChannel.cpp.i
+
+.PHONY : RequestChannel.i
+
+# target to preprocess a source file
+RequestChannel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/RequestChannel.cpp.i
+.PHONY : RequestChannel.cpp.i
+
+RequestChannel.s: RequestChannel.cpp.s
+
+.PHONY : RequestChannel.s
+
+# target to generate assembly for a file
+RequestChannel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA3.dir/build.make CMakeFiles/PA3.dir/RequestChannel.cpp.s
+.PHONY : RequestChannel.cpp.s
+
 client.o: client.cpp.o
 
 .PHONY : client.o
@@ -263,6 +317,12 @@ help:
 	@echo "... FIFOreqchannel.o"
 	@echo "... FIFOreqchannel.i"
 	@echo "... FIFOreqchannel.s"
+	@echo "... MQreqchannel.o"
+	@echo "... MQreqchannel.i"
+	@echo "... MQreqchannel.s"
+	@echo "... RequestChannel.o"
+	@echo "... RequestChannel.i"
+	@echo "... RequestChannel.s"
 	@echo "... client.o"
 	@echo "... client.i"
 	@echo "... client.s"

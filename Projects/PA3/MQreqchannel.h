@@ -1,12 +1,12 @@
-#ifndef _FIFOreqchannel_H_
-#define _FIFOreqchannel_H_
+#ifndef _MQreqchannel_H_
+#define _MQreqchannel_H_
 
 #include "common.h"
 #include "RequestChannel.h"
 
-class FIFORequestChannel : public RequestChannel {
+class MQRequestChannel : public RequestChannel {
 public:
-    FIFORequestChannel(const string _name, const Side _side);
+    MQRequestChannel(const string _name, const Side _side);
     /* Creates a "local copy" of the channel specified by the given name.
      If the channel does not exist, the associated IPC mechanisms are
      created. If the channel exists already, this object is associated with the channel.
@@ -22,7 +22,7 @@ public:
      limit the number of open files per process.
     */
 
-    ~FIFORequestChannel();
+    ~MQRequestChannel();
     /* Destructor of the local copy of the bus. By default, the Server Side deletes any IPC
      mechanisms associated with the channel. */
 

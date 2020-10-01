@@ -88,6 +88,18 @@
 		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/FIFOreqchannel.h">
 			<Option target="PA3"/>
 		</Unit>
+		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/MQreqchannel.cpp">
+			<Option target="PA3"/>
+		</Unit>
+		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/MQreqchannel.h">
+			<Option target="PA3"/>
+		</Unit>
+		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/RequestChannel.cpp">
+			<Option target="PA3"/>
+		</Unit>
+		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/RequestChannel.h">
+			<Option target="PA3"/>
+		</Unit>
 		<Unit filename="/home/osboxes/CLionProjects/CSCE313/Projects/PA3/client.cpp">
 			<Option target="PA3"/>
 		</Unit>

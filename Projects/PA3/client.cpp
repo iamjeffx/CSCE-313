@@ -6,21 +6,23 @@
  * Client-side of server
  */
 #include <sys/wait.h>
+#include <mqueue.h>
 #include "common.h"
 #include "FIFOreqchannel.h"
+#include "MQreqchannel.h"
 
 using namespace std;
 
-void getnDataPoints(FIFORequestChannel &chan, int n, int patient, int ecg, double time) {
+void getnDataPoints(RequestChannel* chan, int n, int patient, int ecg, double time) {
     // Time is specified
     if(time != -1) {
         datamsg msg1(patient, time, 1);
         datamsg msg2(patient, time, 2);
         double r1, r2;
-        chan.cwrite(&msg1, sizeof(datamsg));
-        chan.cread(&r1, sizeof(double));
-        chan.cwrite(&msg2, sizeof(datamsg));
-        chan.cread(&r2, sizeof(double));
+        chan->cwrite(&msg1, sizeof(datamsg));
+        chan->cread(&r1, sizeof(double));
+        chan->cwrite(&msg2, sizeof(datamsg));
+        chan->cread(&r2, sizeof(double));
         if(ecg == -1) {
             cout << time << "," << r1 << "," << r2 << endl;
         } else if(ecg == 1) {
@@ -41,20 +43,20 @@ void getnDataPoints(FIFORequestChannel &chan, int n, int patient, int ecg, doubl
         double r1, r2;
 
         if(ecg == -1) {
-            chan.cwrite(&d1, sizeof(datamsg));
-            chan.cread(&r1, sizeof(double));
+            chan->cwrite(&d1, sizeof(datamsg));
+            chan->cread(&r1, sizeof(double));
 
-            chan.cwrite(&d2, sizeof(datamsg));
-            chan.cread(&r2, sizeof(double));
+            chan->cwrite(&d2, sizeof(datamsg));
+            chan->cread(&r2, sizeof(double));
 
             outfile << r1 << "," << r2 << endl;
         } else if(ecg == 1){
-            chan.cwrite(&d1, sizeof(datamsg));
-            chan.cread(&r1, sizeof(double));
+            chan->cwrite(&d1, sizeof(datamsg));
+            chan->cread(&r1, sizeof(double));
             outfile << r1 << endl;
         } else if(ecg == 2) {
-            chan.cwrite(&d2, sizeof(datamsg));
-            chan.cread(&r2, sizeof(double));
+            chan->cwrite(&d2, sizeof(datamsg));
+            chan->cread(&r2, sizeof(double));
             outfile << r2 << endl;
         }
     }
@@ -65,7 +67,7 @@ void getnDataPoints(FIFORequestChannel &chan, int n, int patient, int ecg, doubl
     outfile.close();
 }
 
-void getDataFromFile(FIFORequestChannel &chan, string file, int capacity) {
+void getDataFromFile(RequestChannel* chan, string file, int capacity) {
     ofstream outfile("./received/" + file, ios::out | ios::binary);
     timeval start, end;
 
@@ -73,12 +75,12 @@ void getDataFromFile(FIFORequestChannel &chan, string file, int capacity) {
     char* buf = new char[sizeof(filemsg) + file.size() + 1];
     memcpy(buf, &f, sizeof(filemsg));
     memcpy(buf + sizeof(filemsg), file.c_str(), file.size() + 1);
-    chan.cwrite(buf, sizeof(filemsg) + file.size() + 1);
+    chan->cwrite(buf, sizeof(filemsg) + file.size() + 1);
 
     __int64_t fileLength;
     __int64_t offset = 0;
     int length;
-    chan.cread(&fileLength, sizeof(__int64_t));
+    chan->cread(&fileLength, sizeof(__int64_t));
 
     cout << "Length of file: " << fileLength << endl;
 
@@ -93,8 +95,8 @@ void getDataFromFile(FIFORequestChannel &chan, string file, int capacity) {
         filemsg d(offset, length);
         memcpy(buf, &d, sizeof(filemsg));
         memcpy(buf + sizeof(filemsg), file.c_str(), file.size() + 1);
-        chan.cwrite(buf, sizeof(filemsg) + file.size() + 1);
-        chan.cread(databuf, length);
+        chan->cwrite(buf, sizeof(filemsg) + file.size() + 1);
+        chan->cread(databuf, length);
         outfile.write(databuf, length);
         offset += length;
     }
@@ -118,12 +120,14 @@ int main(int argc, char *argv[]){
     int capacity = MAX_MESSAGE;
     string file = "";
     bool newChan = false;
+    int numChan = 1;
     MESSAGE_TYPE c = NEWCHANNEL_MSG;
     stringstream str;
+    string ipcMode = "f";
     int opt;
 
     // Get all args
-    while ((opt = getopt(argc, argv, "m:p:t:f:e:c")) != -1) {
+    while ((opt = getopt(argc, argv, "m:p:t:f:e:c:i:")) != -1) {
         switch (opt) {
             case 'm':
                 cap = optarg;
@@ -142,6 +146,10 @@ int main(int argc, char *argv[]){
                 break;
             case 'c':
                 newChan = true;
+                numChan = atoi(optarg);
+                break;
+            case 'i':
+                ipcMode = optarg;
                 break;
         }
     }
@@ -150,30 +158,45 @@ int main(int argc, char *argv[]){
     int pid = fork();
     if(pid == 0) {
         cout << "Child process" << endl;
-        char* args[4];
+        char* args[6];
         args[0] = "./server";
         if(cap != "") {
             args[1] = "-m";
             args[2] = cap;
-            args[3] = NULL;
+            args[3] = "-i";
+            args[4] = (char*)ipcMode.c_str();
+            args[5] = NULL;
         } else {
-            args[1] = NULL;
+            args[1] = "-i";
+            args[2] = (char*)ipcMode.c_str();
+            args[3] = NULL;
         }
         execvp("./server", args);
     } else {
         cout << "Parent process" << endl;
-        FIFORequestChannel chan("control", FIFORequestChannel::CLIENT_SIDE);
+        RequestChannel* chan = NULL;
+        if(ipcMode == string("f"))
+            chan = new FIFORequestChannel("control", RequestChannel::CLIENT_SIDE);
+        else if(ipcMode == string("q"))
+            chan = new MQRequestChannel("control", RequestChannel::CLIENT_SIDE);
+        else if(ipcMode == string("s"))
+            ;
 
         // Case handler for each flag
-        double r;
         if(cap != "") {
             capacity = atoi(cap);
         }
         if(newChan) {
-            chan.cwrite(&c, sizeof(MESSAGE_TYPE));
+            chan->cwrite(&c, sizeof(MESSAGE_TYPE));
             char *newc = new char[MAX_MESSAGE];
-            chan.cread(newc, MAX_MESSAGE);
-            FIFORequestChannel chan2(newc, FIFORequestChannel::CLIENT_SIDE);
+            chan->cread(newc, MAX_MESSAGE);
+            RequestChannel* chan2 = NULL;
+            if(ipcMode == "f")
+                chan2 = new FIFORequestChannel(newc, RequestChannel::CLIENT_SIDE);
+            else if(ipcMode == "q")
+                chan2 = new MQRequestChannel(newc, RequestChannel::CLIENT_SIDE);
+            else if(ipcMode == "s")
+                ;
             cout << "Channel 2 created" << endl;
 
             if(patient != -1) {
@@ -184,11 +207,14 @@ int main(int argc, char *argv[]){
             }
 
             MESSAGE_TYPE m1 = QUIT_MSG;
-            chan2.cwrite(&m1, sizeof(MESSAGE_TYPE));
+            chan2->cwrite(&m1, sizeof(MESSAGE_TYPE));
             cout << "Channel 2 closed" << endl;
+            delete chan2;
         } else {
             if(patient != -1) {
+                cout << "Requesting data point(s)" << endl;
                 getnDataPoints(chan, 1000, patient, ecg, time);
+                cout << "Data point(s) requested" << endl;
             }
             if(file != "") {
                 getDataFromFile(chan, file, capacity);
@@ -196,10 +222,11 @@ int main(int argc, char *argv[]){
         }
 
         cout << "Everything finished" << endl;
-        // closing the channel
+        // Closing the channel
         MESSAGE_TYPE m = QUIT_MSG;
-        chan.cwrite(&m, sizeof (MESSAGE_TYPE));
+        chan->cwrite(&m, sizeof (MESSAGE_TYPE));
         cout << "Channel closed" << endl;
+        delete chan;
         wait(0);
     }
 }
