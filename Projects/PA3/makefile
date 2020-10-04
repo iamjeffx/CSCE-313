@@ -12,11 +12,11 @@ MQreqchannel.o: MQreqchannel.cpp MQreqchannel.h
 SHMreqchannel.o: SHMreqchannel.cpp SHMreqchannel.h
 	g++ -g -w -std=c++11 -c SHMreqchannel.cpp SHMreqchannel.h
 
-client: client.cpp FIFOreqchannel.o MQreqchannel.o SHMreqchannel.o common.o
-	g++ -g -w -std=c++11 -o client client.cpp FIFOreqchannel.o MQreqchannel.o SHMreqchannel.o common.o -lpthread -lrt
+client: client.cpp FIFOreqchannel.o MQreqchannel.o SHMreqchannel.o common.o RequestChannel.h
+	g++ -g -w -std=c++11 -o client client.cpp RequestChannel.h FIFOreqchannel.o MQreqchannel.o SHMreqchannel.o common.o -lpthread -lrt
 
-server: server.cpp  FIFOreqchannel.o MQreqchannel.o common.o
-	g++ -g -w -std=c++11 -o server server.cpp FIFOreqchannel.o MQreqchannel.o SHMreqchannel.o common.o -lpthread -lrt
+server: server.cpp  FIFOreqchannel.o MQreqchannel.o SHMreqchannel.o common.o RequestChannel.h
+	g++ -g -w -std=c++11 -o server server.cpp RequestChannel.h FIFOreqchannel.o MQreqchannel.o SHMreqchannel.o common.o -lpthread -lrt
 
 clean:
 	rm -rf *.o *.csv *.h.gch fifo* server client data*_*

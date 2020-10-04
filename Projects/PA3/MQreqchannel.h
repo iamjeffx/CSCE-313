@@ -5,8 +5,10 @@
 #include "RequestChannel.h"
 
 class MQRequestChannel : public RequestChannel {
+private:
+    int len;
 public:
-    MQRequestChannel(const string _name, const Side _side);
+    MQRequestChannel(const string _name, const Side _side, int len);
     /* Creates a "local copy" of the channel specified by the given name.
      If the channel does not exist, the associated IPC mechanisms are
      created. If the channel exists already, this object is associated with the channel.

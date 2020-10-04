@@ -42,8 +42,8 @@ void process_newchannel_request (RequestChannel *_channel){
     if(ipcMode == string("f"))
         data_channel = new FIFORequestChannel(new_channel_name, RequestChannel::SERVER_SIDE);
     else if(ipcMode == string("q"))
-        data_channel = new MQRequestChannel(new_channel_name, RequestChannel::SERVER_SIDE);
-    else if(ipcMode == string("s"))
+        data_channel = new MQRequestChannel(new_channel_name, RequestChannel::SERVER_SIDE, buffercapacity);
+    else if(ipcMode == string("m"))
         data_channel = new SHMRequestChannel(new_channel_name, RequestChannel::SERVER_SIDE, buffercapacity);
     thread thread_for_client (handle_process_loop, data_channel);
     thread_for_client.detach();
@@ -200,8 +200,8 @@ int main(int argc, char *argv[]){
     if(ipcMode == string("f"))
         control_channel = new FIFORequestChannel("control", RequestChannel::SERVER_SIDE);
     else if(ipcMode == string("q"))
-        control_channel = new MQRequestChannel("control", RequestChannel::SERVER_SIDE);
-    else if(ipcMode == string("s"))
+        control_channel = new MQRequestChannel("control", RequestChannel::SERVER_SIDE, buffercapacity);
+    else if(ipcMode == string("m"))
         control_channel = new SHMRequestChannel("control", RequestChannel::SERVER_SIDE, buffercapacity);
     handle_process_loop (control_channel);
     cout << "Server terminated" << endl;
