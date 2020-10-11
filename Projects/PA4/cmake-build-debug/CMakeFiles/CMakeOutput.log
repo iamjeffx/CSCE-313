@@ -1,0 +1,14 @@
+The system is: Linux - 5.4.0-42-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/osboxes/Desktop/CSCE-313/Projects/PA4/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/a.out"
+
