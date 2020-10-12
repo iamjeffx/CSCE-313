@@ -59,7 +59,7 @@ public:
         cout << endl;
     }
 
-
-
-
+    void update(int patientNo, double value) {
+        hists.at(patientNo - 1)->update(value);
+    }
 };

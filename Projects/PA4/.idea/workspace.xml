@@ -30,20 +30,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71197e13-23be-4da0-811f-20a6db331764" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/BoundedBuffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FIFOreqchannel.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FIFOreqchannel.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PA4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PA4.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoundedBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/BoundedBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HistogramCollection.h" beforeDir="false" afterPath="$PROJECT_DIR$/HistogramCollection.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/client.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +83,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602388546961</updated>
-      <workItem from="1602388560310" duration="746000" />
+      <workItem from="1602388560310" duration="5969000" />
     </task>
     <servers />
   </component>
