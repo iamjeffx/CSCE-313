@@ -32,8 +32,6 @@
     <list default="true" id="71197e13-23be-4da0-811f-20a6db331764" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BoundedBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/BoundedBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HistogramCollection.h" beforeDir="false" afterPath="$PROJECT_DIR$/HistogramCollection.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/client.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602388546961</updated>
-      <workItem from="1602388560310" duration="5969000" />
+      <workItem from="1602388560310" duration="7058000" />
     </task>
     <servers />
   </component>
