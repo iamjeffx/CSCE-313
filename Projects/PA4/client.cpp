@@ -150,13 +150,15 @@ int main(int argc, char *argv[])
 
     FIFORequestChannel* workerChan[w];
     // Create worker channels
-    for(int i = 0; i < w; i++) {
-        workerChan[i] = create_new_channel(chan);
-    }
+
 
 
     /* Start all threads here */
     if(p_request) {
+        for(int i = 0; i < w; i++) {
+            workerChan[i] = create_new_channel(chan);
+        }
+
         thread patient[p];
         for(int i = 0; i < p; i++) {
             patient[i] = thread(patient_thread_function, n, i + 1, &request_buffer);
@@ -183,6 +185,10 @@ int main(int argc, char *argv[])
         cout << "Worker threads completed" << endl;
     }
     if(f_request) {
+        for(int i = 0; i < w; i++) {
+            workerChan[i] = create_new_channel(chan);
+        }
+
         thread filethread(file_thread_function, filename, &request_buffer, chan, m);
 
         thread workers[w];

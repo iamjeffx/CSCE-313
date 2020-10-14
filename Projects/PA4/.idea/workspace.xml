@@ -30,12 +30,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71197e13-23be-4da0-811f-20a6db331764" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/client.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recv/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/recv/1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recv/10.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recv/2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recv/3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FIFOreqchannel.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Histogram.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +77,7 @@
       <workItem from="1602388560310" duration="7058000" />
       <workItem from="1602639807691" duration="5590000" />
       <workItem from="1602646038357" duration="176000" />
-      <workItem from="1602646477632" duration="1117000" />
+      <workItem from="1602646477632" duration="1469000" />
     </task>
     <servers />
   </component>
