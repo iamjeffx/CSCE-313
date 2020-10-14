@@ -37,20 +37,19 @@ public:
     }
 
     void push(char* data, int len){
+        //0. Convert the incoming byte sequence given by data and len into a vector<char>
+        vector<char> d(data, data + len);
+
         //1. Wait until there is room in the queue (i.e., queue lengh is less than cap)
         unique_lock<mutex> l(m);
         slot_available.wait(l, [this]{return q.size() < cap;});
 
-        //2. Convert the incoming byte sequence given by data and len into a vector<char>
-        vector<char> d(data, data + len);
-
-        //3. Then push the vector at the end of the queue
+        //2. Then push the vector at the end of the queue
         q.push(d);
         l.unlock();
 
-        //4. Wake up consumer threads(pop() threads)
+        //3. Wake up consumer threads(pop() threads)
         data_available.notify_one();
-
     }
 
     int pop(char* buf, int bufcap){
