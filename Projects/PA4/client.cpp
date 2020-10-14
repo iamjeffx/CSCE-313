@@ -92,13 +92,15 @@ FIFORequestChannel* create_new_channel(FIFORequestChannel* mainChan) {
 
 int main(int argc, char *argv[])
 {
-    int n = 1000;    //default number of requests per "patient"
-    int p = -1;     // number of patients [1,15]
-    int w = 500;    //default number of worker threads
+    int n = 1000;   // default number of requests per "patient"
+    int p = 1;      // number of patients [1,15]
+    int w = 500;    // default number of worker threads
     int b = 50; 	// default capacity of the request buffer, you should change this default
 	int m = MAX_MESSAGE; 	// default capacity of the message buffer
     srand(time_t(NULL));
     string filename = "";
+    bool p_request = false;
+    bool f_request = false;
 
     // Grab command line arguments
     int opt;
@@ -112,6 +114,7 @@ int main(int argc, char *argv[])
                 break;
             case 'p':
                 p = atoi(optarg);
+                p_request = true;
                 break;
             case 'b':
                 b = atoi(optarg);
@@ -121,6 +124,7 @@ int main(int argc, char *argv[])
                 break;
             case 'f':
                 filename = optarg;
+                f_request = true;
                 break;
         }
     }
@@ -152,37 +156,52 @@ int main(int argc, char *argv[])
 
 
     /* Start all threads here */
-    thread patient[p];
-    for(int i = 0; i < p; i++) {
-        patient[i] = thread(patient_thread_function, n, i + 1, &request_buffer);
+    if(p_request) {
+        thread patient[p];
+        for(int i = 0; i < p; i++) {
+            patient[i] = thread(patient_thread_function, n, i + 1, &request_buffer);
+        }
+
+        thread workers[w];
+        for(int i = 0; i < w; i++) {
+            workers[i] = thread(worker_thread_function, workerChan[i], &request_buffer, &hc, m);
+        }
+
+        for(int i = 0; i < p; i++) {
+            patient[i].join();
+        }
+        cout << "Patient threads completed" << endl;
+
+        for(int i = 0; i < w; i++) {
+            MESSAGE_TYPE q = QUIT_MSG;
+            request_buffer.push((char*)&q, sizeof(q));
+        }
+
+        for(int i = 0; i < w; i++) {
+            workers[i].join();
+        }
+        cout << "Worker threads completed" << endl;
     }
+    if(f_request) {
+        thread filethread(file_thread_function, filename, &request_buffer, chan, m);
 
-    thread filethread(file_thread_function, filename, &request_buffer, chan, m);
+        thread workers[w];
+        for(int i = 0; i < w; i++) {
+            workers[i] = thread(worker_thread_function, workerChan[i], &request_buffer, &hc, m);
+        }
 
-    thread workers[w];
-    for(int i = 0; i < w; i++) {
-        workers[i] = thread(worker_thread_function, workerChan[i], &request_buffer, &hc, m);
-    }
-
-
-	/* Join all threads here */
-    for(int i = 0; i < p; i++) {
-        patient[i].join();
-    }
-    cout << "Patient threads completed" << endl;
-
-    if(filename != string(""))
         filethread.join();
 
-    for(int i = 0; i < w; i++) {
-        MESSAGE_TYPE q = QUIT_MSG;
-        request_buffer.push((char*)&q, sizeof(q));
-    }
+        for(int i = 0; i < w; i++) {
+            MESSAGE_TYPE q = QUIT_MSG;
+            request_buffer.push((char*)&q, sizeof(q));
+        }
 
-    for(int i = 0; i < w; i++) {
-        workers[i].join();
+        for(int i = 0; i < w; i++) {
+            workers[i].join();
+        }
+        cout << "Worker threads completed" << endl;
     }
-    cout << "Worker threads completed" << endl;
 
     gettimeofday (&end, 0);
     // print the results
