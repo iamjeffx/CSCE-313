@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage[dvipsnames]{xcolor}
+
+\graphicspath{ {./images/} }
+
+\newcommand{\NOT}{\neg}
+\newcommand{\AND}{\wedge}
+\newcommand{\OR}{\vee}
+\newcommand{\XOR}{\oplus}
+\newcommand{\IMPLIES}{\rightarrow}
+\newcommand{\IFF}{\leftrightarrow}
+\newcommand{\E}{\exists}
+\newcommand{\A}{\forall}
+
+\setlength{\parskip}{.1in}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\begin{document}
+
+\begin{center}
+
+{\bf
+CSCE 313\\
+Quiz 3\\
+Jeffrey Xu\\
+527008162\\
+10/20/20\\
+}
+
+\end{center}
+
+{\bf 1. [20 pts]} Assume the following processes A, B, C are loaded in memory of a system that uses multiprogramming. These processes have 13, 7 and 11 instructions respectively, Also assume that the dispatcher lives at address 100 in memory and spans 4 instructiors (i.e. 100-103). The following table shows only instruction addresses in the memory with I/O requests labelled, along with the duration of these I/O operations in terms of CPU instructions. Although I/O operations do not take CPU instructions, the duration means that the I/O operations will finish by the time the corresponding number of CPU instructions execute. Please draw a trace of these 3 processes running together in the CPU using Shortest Remaining Time First (SRTF) with preemption and no timer (i.e., we are not running a timer that is used by time sharing or round-robin). Recall that for SRTF, you only need to decide based on the next CPU burst, not the entire remaining time of the process. You can skip the first invocation of the dispatcher to decide the first process to run in the CPU.
+
+\begin{center}
+\begin{tabular}{| c | c | c |}
+\hline
+{\bf Process A} & {\bf Process B} & {\bf Process C}\\
+\hline\hline
+5000 & 8000 & 12000\\
+\hline
+5001 & 8001 & 12001 (I/O, takes 3 ins.)\\
+\hline
+5002 & 8002 & 12002\\
+\hline
+5003 & 8003 (I/O, takes 7 ins.) & 12003\\
+\hline
+5004 (I/O, takes 6 ins.) & 8004 & 12004\\
+\hline
+5005 (I/O, takes 4 ins.) & 8005 & 12005\\
+\hline
+5006 & 8006 & 12006 (I/O, takes 1 ins.)\\
+\hline
+5007 & & 12007\\
+\hline
+5008 (I/O, takes 5 ins.) & & 12008 (I/O, takes 2 ins.)\\
+\hline
+5009 & & 12009\\
+\hline
+5010 & & 12010\\
+\hline
+5011 & & 12011\\
+\hline
+5012 & & 12012\\
+\hline
+5013 & & \\
+\hline
+5014 & & \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}
