@@ -5,6 +5,8 @@
 #include "common.h"
 #include "HistogramCollection.h"
 #include "FIFOreqchannel.h"
+
+#include <sys/wait.h>
 using namespace std;
 
 
@@ -92,21 +94,23 @@ FIFORequestChannel* create_new_channel(FIFORequestChannel* mainChan) {
 
 int main(int argc, char *argv[])
 {
-    int n = 1000;   // default number of requests per "patient"
-    int p = 1;      // number of patients [1,15]
+    int n = 15000;   // default number of requests per "patient"
+    int p = 10;      // number of patients [1,15]
     int w = 500;    // default number of worker threads
-    int b = 50; 	// default capacity of the request buffer, you should change this default
+    int b = 100; 	// default capacity of the request buffer, you should change this default
 	int m = MAX_MESSAGE; 	// default capacity of the message buffer
     srand(time_t(NULL));
     string filename = "";
     bool p_request = false;
     bool f_request = false;
+    string m_s = "";
 
     // Grab command line arguments
     int opt;
     while((opt = getopt(argc, argv, "m:n:p:b:w:f:")) != -1) {
         switch(opt) {
             case 'm':
+                m_s = optarg;
                 m = atoi(optarg);
                 break;
             case 'n':
@@ -129,10 +133,14 @@ int main(int argc, char *argv[])
         }
     }
 
+    if(m_s == "") {
+        m_s = "256";
+    }
+
     int pid = fork();
     if (pid == 0){
 		// modify this to pass along m
-        execl ("server", "server", (char *)NULL);
+        execl ("server", "server", "-m", (char *)m_s.c_str(), (char *)NULL);
     }
 
 	FIFORequestChannel* chan = new FIFORequestChannel("control", FIFORequestChannel::CLIENT_SIDE);
@@ -222,4 +230,5 @@ int main(int argc, char *argv[])
     cout << "All Done!!!" << endl;
     delete chan;
 
+    wait(0);
 }
