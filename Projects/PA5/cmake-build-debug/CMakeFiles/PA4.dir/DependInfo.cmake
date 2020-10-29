@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/osboxes/Desktop/CSCE-313/Projects/PA4/FIFOreqchannel.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA4/cmake-build-debug/CMakeFiles/PA4.dir/FIFOreqchannel.cpp.o"
-  "/home/osboxes/Desktop/CSCE-313/Projects/PA4/Histogram.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA4/cmake-build-debug/CMakeFiles/PA4.dir/Histogram.cpp.o"
-  "/home/osboxes/Desktop/CSCE-313/Projects/PA4/client.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA4/cmake-build-debug/CMakeFiles/PA4.dir/client.cpp.o"
-  "/home/osboxes/Desktop/CSCE-313/Projects/PA4/common.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA4/cmake-build-debug/CMakeFiles/PA4.dir/common.cpp.o"
-  "/home/osboxes/Desktop/CSCE-313/Projects/PA4/server.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA4/cmake-build-debug/CMakeFiles/PA4.dir/server.cpp.o"
+  "/home/osboxes/Desktop/CSCE-313/Projects/PA5/FIFOreqchannel.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles/PA4.dir/FIFOreqchannel.cpp.o"
+  "/home/osboxes/Desktop/CSCE-313/Projects/PA5/Histogram.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles/PA4.dir/Histogram.cpp.o"
+  "/home/osboxes/Desktop/CSCE-313/Projects/PA5/client.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles/PA4.dir/client.cpp.o"
+  "/home/osboxes/Desktop/CSCE-313/Projects/PA5/common.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles/PA4.dir/common.cpp.o"
+  "/home/osboxes/Desktop/CSCE-313/Projects/PA5/server.cpp" "/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles/PA4.dir/server.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
