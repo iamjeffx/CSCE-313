@@ -58,6 +58,14 @@ public:
     cannot accept msglen bytes due to its own buffer capacity. */
 
     string name();
+
+    int getrfd() {
+        return this->rfd;
+    }
+
+    int getwfd() {
+        return this->wfd;
+    }
 };
 
 #endif

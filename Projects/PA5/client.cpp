@@ -7,6 +7,7 @@
 #include "FIFOreqchannel.h"
 
 #include <sys/wait.h>
+#include <sys/epoll.h>
 using namespace std;
 
 
@@ -83,6 +84,96 @@ void worker_thread_function(FIFORequestChannel* chan, BoundedBuffer* request_buf
     }
 }
 
+void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wchans, BoundedBuffer* request_buffer, HistogramCollection* hc){
+    char buf[1024];
+    double response = 0;
+
+    char recvbuf[mb];
+
+    struct epoll_event ev;
+    struct epoll_event events[w];
+
+    // Create an empty epoll list
+    int epollfd = epoll_create1(0);
+    if(epollfd == -1) {
+        EXITONERROR("epoll_create1");
+    }
+
+    unordered_map<int, int> fd_to_index;
+    vector<vector<char>> state(w);
+
+    int sent = 0, rec = 0;
+
+    // Priming all of the channels and adding each rfd to the list
+    for(int i = 0; i < w; i++) {
+        int sz = request_buffer->pop(buf, 1024);
+        wchans[i]->cwrite(buf, sz);
+
+        // Record the state[i]
+        state[i] = vector<char>(buf, buf+sz);
+        sent++;
+        int rfd = wchans[i]->getrfd();
+        fcntl(rfd, F_SETFL, O_NONBLOCK);
+
+        ev.events = EPOLLIN | EPOLLET;
+        ev.data.fd = rfd;
+        fd_to_index[rfd] = i;
+        if(epoll_ctl(epollfd, EPOLL_CTL_ADD, rfd, &ev) == -1) {
+            EXITONERROR("epoll_ctl: listen_sock");
+        }
+    }
+
+    // sent = w, rec = 0
+    bool quit_rec = false;
+
+    while(true) {
+        if(quit_rec && rec + 1 == sent) {
+            break;
+        }
+        int nfds = epoll_wait(epollfd, events, w, -1);
+        if(nfds == -1) {
+            EXITONERROR("epoll_wait");
+        }
+        for(int i = 0; i < nfds; i++) {
+            int rfd = events[i].data.fd;
+            int index = fd_to_index[rfd];
+            int resp_sz = wchans[index]->cread(recvbuf, mb);
+            rec++;
+
+            // Process recvbuf
+            vector<char> req = state[index];
+            char* request = req.data();
+
+            // Processing response
+            MESSAGE_TYPE* m = (MESSAGE_TYPE*) request;
+            if(*m == DATA_MSG) {
+                hc->update(((datamsg*)request)->person, *(double*)recvbuf);
+            } else if(*m == FILE_MSG) {
+                filemsg* f = (filemsg*)m;
+                string filename = (char*)(f + 1);
+
+                string recvfname = "recv/" + filename;
+
+                FILE* fp = fopen(recvfname.c_str(), "r+");
+                fseek(fp, f->offset, SEEK_SET);
+                fwrite(recvbuf, 1, f->length, fp);
+                fclose(fp);
+            }
+
+            // Reuse channel
+            if(!quit_rec) {
+                int req_sz = request_buffer->pop(buf, sizeof(buf));
+                if (*(MESSAGE_TYPE *) buf == QUIT_MSG) {
+                    quit_rec = true;
+                }
+                wchans[index]->cwrite(buf, req_sz);
+                state[index] = vector<char>(buf, buf + req_sz);
+                sent++;
+            }
+        }
+    }
+}
+
 FIFORequestChannel* create_new_channel(FIFORequestChannel* mainChan) {
     char name[1024];
     MESSAGE_TYPE m = NEWCHANNEL_MSG;
@@ -94,9 +185,9 @@ FIFORequestChannel* create_new_channel(FIFORequestChannel* mainChan) {
 
 int main(int argc, char *argv[])
 {
-    int n = 15000;   // default number of requests per "patient"
+    int n = 15;   // default number of requests per "patient"
     int p = 10;      // number of patients [1,15]
-    int w = 500;    // default number of worker threads
+    int w = 10;    // default number of worker threads
     int b = 100; 	// default capacity of the request buffer, you should change this default
 	int m = MAX_MESSAGE; 	// default capacity of the message buffer
     srand(time_t(NULL));
@@ -157,9 +248,6 @@ int main(int argc, char *argv[])
     gettimeofday (&start, 0);
 
     FIFORequestChannel* workerChan[w];
-    // Create worker channels
-
-
 
     /* Start all threads here */
     if(p_request) {
@@ -172,24 +260,17 @@ int main(int argc, char *argv[])
             patient[i] = thread(patient_thread_function, n, i + 1, &request_buffer);
         }
 
-        thread workers[w];
-        for(int i = 0; i < w; i++) {
-            workers[i] = thread(worker_thread_function, workerChan[i], &request_buffer, &hc, m);
-        }
+        thread evp(event_polling_thread, n, p, w, m, (FIFORequestChannel**)workerChan, &request_buffer, &hc);
 
         for(int i = 0; i < p; i++) {
             patient[i].join();
         }
         cout << "Patient threads completed" << endl;
 
-        for(int i = 0; i < w; i++) {
-            MESSAGE_TYPE q = QUIT_MSG;
-            request_buffer.push((char*)&q, sizeof(q));
-        }
+        MESSAGE_TYPE q = QUIT_MSG;
+        request_buffer.push((char*)&q, sizeof(q));
 
-        for(int i = 0; i < w; i++) {
-            workers[i].join();
-        }
+        evp.join();
         cout << "Worker threads completed" << endl;
     }
     if(f_request) {
@@ -199,31 +280,32 @@ int main(int argc, char *argv[])
 
         thread filethread(file_thread_function, filename, &request_buffer, chan, m);
 
-        thread workers[w];
-        for(int i = 0; i < w; i++) {
-            workers[i] = thread(worker_thread_function, workerChan[i], &request_buffer, &hc, m);
-        }
+        thread evp(event_polling_thread, n, p, w, m, (FIFORequestChannel**)workerChan, &request_buffer, &hc);
 
         filethread.join();
 
-        for(int i = 0; i < w; i++) {
-            MESSAGE_TYPE q = QUIT_MSG;
-            request_buffer.push((char*)&q, sizeof(q));
-        }
+        MESSAGE_TYPE q = QUIT_MSG;
+        request_buffer.push((char*)&q, sizeof(q));
 
-        for(int i = 0; i < w; i++) {
-            workers[i].join();
-        }
+        evp.join();
         cout << "Worker threads completed" << endl;
     }
 
     gettimeofday (&end, 0);
     // print the results
-	hc.print ();
+	hc.print();
 
     int secs = (end.tv_sec * 1e6 + end.tv_usec - start.tv_sec * 1e6 - start.tv_usec)/(int) 1e6;
     int usecs = (int)(end.tv_sec * 1e6 + end.tv_usec - start.tv_sec * 1e6 - start.tv_usec)%((int) 1e6);
     cout << "Took " << secs << " seconds and " << usecs << " micro seconds" << endl;
+
+    cout << "About to delete worker channels" << endl;
+    for(int i = 0; i < w; i++) {
+        MESSAGE_TYPE q = QUIT_MSG;
+        workerChan[i]->cwrite((char *)&q, sizeof(MESSAGE_TYPE));
+        delete workerChan[i];
+    }
+    cout << "Worker channels deleted" << endl;
 
     MESSAGE_TYPE q = QUIT_MSG;
     chan->cwrite ((char *) &q, sizeof (MESSAGE_TYPE));
