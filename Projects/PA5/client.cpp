@@ -127,7 +127,7 @@ void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wcha
     bool quit_rec = false;
 
     while(true) {
-        if(quit_rec && rec + 1 == sent) {
+        if(quit_rec && rec == sent) {
             break;
         }
         int nfds = epoll_wait(epollfd, events, w, -1);
@@ -165,6 +165,7 @@ void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wcha
                 int req_sz = request_buffer->pop(buf, sizeof(buf));
                 if (*(MESSAGE_TYPE *) buf == QUIT_MSG) {
                     quit_rec = true;
+                    continue;
                 }
                 wchans[index]->cwrite(buf, req_sz);
                 state[index] = vector<char>(buf, buf + req_sz);
@@ -299,15 +300,15 @@ int main(int argc, char *argv[])
     int usecs = (int)(end.tv_sec * 1e6 + end.tv_usec - start.tv_sec * 1e6 - start.tv_usec)%((int) 1e6);
     cout << "Took " << secs << " seconds and " << usecs << " micro seconds" << endl;
 
-    cout << "About to delete worker channels" << endl;
+    MESSAGE_TYPE q = QUIT_MSG;
+
     for(int i = 0; i < w; i++) {
-        MESSAGE_TYPE q = QUIT_MSG;
         workerChan[i]->cwrite((char *)&q, sizeof(MESSAGE_TYPE));
         delete workerChan[i];
+        cout << "Worker channel " << i << " deleted" << endl;
     }
     cout << "Worker channels deleted" << endl;
 
-    MESSAGE_TYPE q = QUIT_MSG;
     chan->cwrite ((char *) &q, sizeof (MESSAGE_TYPE));
     cout << "All Done!!!" << endl;
     delete chan;
