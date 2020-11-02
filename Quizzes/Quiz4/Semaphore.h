@@ -10,19 +10,19 @@ using namespace std;
 class Semaphore {
 private:
     int value;
-//    int max;
+    int max;
     mutex m;
     condition_variable cv;
 public:
-    Semaphore(int val) : value(val) {}
+    Semaphore(int _max) : value(0), max(_max) {}
     void P() {
         unique_lock<mutex> l(m);
-        cv.wait(l, [this]{return value > 0;});
-        value--;
+        cv.wait(l, [this]{return value < max;});
+        value++;
     }
     void V() {
         unique_lock<mutex> l(m);
-        value++;
+        value--;
         cv.notify_all();
     }
 };
