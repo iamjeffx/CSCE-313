@@ -75,6 +75,11 @@ int determineLength(string dir) {
     return max;
 }
 
+char* formatdate(char* str, time_t val) {
+    strftime(str, 36, "%b %e %H:%M", localtime(&val));
+    return str;
+}
+
 int main(int argc, char* argv[]) {
     if(argc == 1) {
         return 0;
@@ -88,13 +93,15 @@ int main(int argc, char* argv[]) {
         if(direntp->d_name[0] == '.') {
             continue;
         }
+        char date[36];
         struct stat sb;
         lstat(direntp->d_name, &sb);
         cout << parse(sb.st_mode) << " " << sb.st_nlink << " " << sb.st_uid << " " << sb.st_gid << " ";
         cout.width(len);
         cout << std::right;
-        cout << sb.st_size << " " << sb.st_mtime << " " << direntp->d_name << endl;
+        cout << sb.st_size << " " << formatdate(date, sb.st_mtime) << " " << direntp->d_name << endl;
     }
     closedir(dirp);
+
     return 0;
 }
