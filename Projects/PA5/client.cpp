@@ -102,11 +102,18 @@ void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wcha
     unordered_map<int, int> fd_to_index;
     vector<vector<char>> state(w);
 
+    // sent = w, rec = 0
+    bool quit_rec = false;
+
     int sent = 0, rec = 0;
 
     // Priming all of the channels and adding each rfd to the list
     for(int i = 0; i < w; i++) {
         int sz = request_buffer->pop(buf, 1024);
+        if(*(MESSAGE_TYPE *)buf == QUIT_MSG) {
+            quit_rec = true;
+            break;
+        }
         wchans[i]->cwrite(buf, sz);
 
         // Record the state[i]
@@ -123,8 +130,6 @@ void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wcha
         }
     }
 
-    // sent = w, rec = 0
-    bool quit_rec = false;
 
     while(true) {
         if(quit_rec && rec == sent) {
@@ -165,11 +170,11 @@ void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wcha
                 int req_sz = request_buffer->pop(buf, sizeof(buf));
                 if (*(MESSAGE_TYPE *) buf == QUIT_MSG) {
                     quit_rec = true;
-                    continue;
+                } else {
+                    wchans[index]->cwrite(buf, req_sz);
+                    state[index] = vector<char>(buf, buf + req_sz);
+                    sent++;
                 }
-                wchans[index]->cwrite(buf, req_sz);
-                state[index] = vector<char>(buf, buf + req_sz);
-                sent++;
             }
         }
     }
@@ -305,9 +310,8 @@ int main(int argc, char *argv[])
     for(int i = 0; i < w; i++) {
         workerChan[i]->cwrite((char *)&q, sizeof(MESSAGE_TYPE));
         delete workerChan[i];
-        cout << "Worker channel " << i << " deleted" << endl;
     }
-    cout << "Worker channels deleted" << endl;
+    cout << "All worker channels deleted" << endl;
 
     chan->cwrite ((char *) &q, sizeof (MESSAGE_TYPE));
     cout << "All Done!!!" << endl;
