@@ -16,7 +16,7 @@ public:
     Semaphore (int _v):value(_v){}
     void P(int weight){
         unique_lock<mutex> l(m);
-        cv.wait (l, [this]{return value > 0;});
+        cv.wait(l, [this]{return value >= weight;});
         value -= weight;
     }
     void V(int weight) {
