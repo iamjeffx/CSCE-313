@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/sysmacros.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -32,14 +35,16 @@ string permissions(int p) {
     }
 }
 
-string parse(int perm) {
+string parse(int perm, bool softlink) {
     int p = octal(perm);
     string result = "";
     for(int i = 0; i < 3; i++) {
         result = permissions(p % 10) + result;
         p /= 10;
     }
-    if(p == 40) {
+    if(softlink) {
+        result = "l" + result;
+    } else if(p == 40) {
         result = "d" + result;
     } else {
         result = "-" + result;
@@ -95,11 +100,24 @@ int main(int argc, char* argv[]) {
         }
         char date[36];
         struct stat sb;
-        lstat(direntp->d_name, &sb);
-        cout << parse(sb.st_mode) << " " << sb.st_nlink << " " << sb.st_uid << " " << sb.st_gid << " ";
+        string file = dir + "/" + direntp->d_name;
+        lstat(file.c_str(), &sb);
+        bool softlink = false;
+        char link[100];
+        int nbytes = -1;
+        if(S_ISLNK(sb.st_mode)) {
+            softlink = true;
+            nbytes = readlink(file.c_str(), link, 101);
+        }
+        cout << parse(sb.st_mode, softlink) << " " << sb.st_nlink << " " << sb.st_uid << " " << sb.st_gid << " ";
         cout.width(len);
         cout << std::right;
-        cout << sb.st_size << " " << formatdate(date, sb.st_mtime) << " " << direntp->d_name << endl;
+        cout << sb.st_size << " " << formatdate(date, sb.st_mtime) << " ";
+        if(nbytes == -1) {
+            cout << direntp->d_name << endl;
+        } else {
+            cout << direntp->d_name << " -> " << link << endl;
+        }
     }
     closedir(dirp);
 
