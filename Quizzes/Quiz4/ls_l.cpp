@@ -35,7 +35,7 @@ string permissions(int p) {
     }
 }
 
-string parse(int perm, bool softlink) {
+string parse(int perm, bool softlink, bool fifo) {
     int p = octal(perm);
     string result = "";
     for(int i = 0; i < 3; i++) {
@@ -44,6 +44,8 @@ string parse(int perm, bool softlink) {
     }
     if(softlink) {
         result = "l" + result;
+    } else if(fifo) {
+        result = "p" + result;
     } else if(p == 40) {
         result = "d" + result;
     } else {
@@ -103,13 +105,16 @@ int main(int argc, char* argv[]) {
         string file = dir + "/" + direntp->d_name;
         lstat(file.c_str(), &sb);
         bool softlink = false;
+        bool fifo = false;
         char link[100];
         int nbytes = -1;
         if(S_ISLNK(sb.st_mode)) {
             softlink = true;
             nbytes = readlink(file.c_str(), link, 101);
+        } else if(S_ISFIFO(sb.st_mode)) {
+            fifo = true;
         }
-        cout << parse(sb.st_mode, softlink) << " " << sb.st_nlink << " " << sb.st_uid << " " << sb.st_gid << " ";
+        cout << parse(sb.st_mode, softlink, fifo) << " " << sb.st_nlink << " " << sb.st_uid << " " << sb.st_gid << " ";
         cout.width(len);
         cout << std::right;
         cout << sb.st_size << " " << formatdate(date, sb.st_mtime) << " ";
