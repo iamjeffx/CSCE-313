@@ -4,12 +4,11 @@
 #include "Histogram.h"
 #include "common.h"
 #include "HistogramCollection.h"
-#include "FIFOreqchannel.h"
+#include "TCPreqchannel.h"
 
 #include <sys/wait.h>
 #include <sys/epoll.h>
 using namespace std;
-
 
 void patient_thread_function(int n, int patientNo, BoundedBuffer* request_buffer){
     datamsg d(patientNo, 0.0, 1);
@@ -21,7 +20,7 @@ void patient_thread_function(int n, int patientNo, BoundedBuffer* request_buffer
     }
 }
 
-void file_thread_function(string filename, BoundedBuffer* request_buffer, FIFORequestChannel* chan, int mb) {
+void file_thread_function(string filename, BoundedBuffer* request_buffer, TCPRequestChannel* chan, int mb) {
     // 1. Create the file
     string recvfname = "recv/" + filename;
 
@@ -50,41 +49,7 @@ void file_thread_function(string filename, BoundedBuffer* request_buffer, FIFORe
     }
 }
 
-void worker_thread_function(FIFORequestChannel* chan, BoundedBuffer* request_buffer, HistogramCollection* hc, int mb){
-    char buf[1024];
-    double response = 0;
-
-    char recvbuf[mb];
-    while(true) {
-        request_buffer->pop(buf, 1024);
-        MESSAGE_TYPE* m = (MESSAGE_TYPE*)buf;
-
-        if(*m == DATA_MSG) {
-            chan->cwrite(buf, sizeof(datamsg));
-            chan->cread(&response, sizeof(double));
-            hc->update(((datamsg*)buf)->person, response);
-        } else if(*m == QUIT_MSG) {
-            chan->cwrite(m, sizeof(MESSAGE_TYPE));
-            delete chan;
-            break;
-        } else if(*m == FILE_MSG) {
-            filemsg* f = (filemsg*)buf;
-            string filename = (char*)(f + 1);
-            int msize = sizeof(filemsg) + filename.size() + 1;
-            chan->cwrite(buf, msize);
-            chan->cread(recvbuf, mb);
-
-            string recvfname = "recv/" + filename;
-
-            FILE* fp = fopen(recvfname.c_str(), "r+");
-            fseek(fp, f->offset, SEEK_SET);
-            fwrite(recvbuf, 1, f->length, fp);
-            fclose(fp);
-        }
-    }
-}
-
-void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wchans, BoundedBuffer* request_buffer, HistogramCollection* hc){
+void event_polling_thread(int n, int p, int w, int mb, TCPRequestChannel** wchans, BoundedBuffer* request_buffer, HistogramCollection* hc){
     char buf[1024];
     double response = 0;
 
@@ -119,7 +84,7 @@ void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wcha
         // Record the state[i]
         state[i] = vector<char>(buf, buf+sz);
         sent++;
-        int rfd = wchans[i]->getrfd();
+        int rfd = wchans[i]->getfd();
         fcntl(rfd, F_SETFL, O_NONBLOCK);
 
         ev.events = EPOLLIN | EPOLLET;
@@ -180,15 +145,6 @@ void event_polling_thread(int n, int p, int w, int mb, FIFORequestChannel** wcha
     }
 }
 
-FIFORequestChannel* create_new_channel(FIFORequestChannel* mainChan) {
-    char name[1024];
-    MESSAGE_TYPE m = NEWCHANNEL_MSG;
-    mainChan->cwrite(&m, sizeof(m));
-    mainChan->cread(name, 1024);
-    FIFORequestChannel* newChan = new FIFORequestChannel(name, FIFORequestChannel::CLIENT_SIDE);
-    return newChan;
-}
-
 int main(int argc, char *argv[])
 {
     int n = 15;   // default number of requests per "patient"
@@ -201,10 +157,11 @@ int main(int argc, char *argv[])
     bool p_request = false;
     bool f_request = false;
     string m_s = "";
+    string host, port;
 
     // Grab command line arguments
     int opt;
-    while((opt = getopt(argc, argv, "m:n:p:b:w:f:")) != -1) {
+    while((opt = getopt(argc, argv, "m:n:p:b:w:f:h:r:")) != -1) {
         switch(opt) {
             case 'm':
                 m_s = optarg;
@@ -227,6 +184,12 @@ int main(int argc, char *argv[])
                 filename = optarg;
                 f_request = true;
                 break;
+            case 'h':
+                host = optarg;
+                break;
+            case 'r':
+                port = optarg;
+                break;
         }
     }
 
@@ -234,13 +197,6 @@ int main(int argc, char *argv[])
         m_s = "256";
     }
 
-    int pid = fork();
-    if (pid == 0){
-		// modify this to pass along m
-        execl ("server", "server", "-m", (char *)m_s.c_str(), (char *)NULL);
-    }
-
-	FIFORequestChannel* chan = new FIFORequestChannel("control", FIFORequestChannel::CLIENT_SIDE);
     BoundedBuffer request_buffer(b);
 	HistogramCollection hc;
 
@@ -253,12 +209,12 @@ int main(int argc, char *argv[])
     struct timeval start, end;
     gettimeofday (&start, 0);
 
-    FIFORequestChannel* workerChan[w];
+    TCPRequestChannel* workerChan[w];
 
     /* Start all threads here */
     if(p_request) {
         for(int i = 0; i < w; i++) {
-            workerChan[i] = create_new_channel(chan);
+            workerChan[i] = new TCPRequestChannel(host, port);
         }
 
         thread patient[p];
@@ -266,7 +222,7 @@ int main(int argc, char *argv[])
             patient[i] = thread(patient_thread_function, n, i + 1, &request_buffer);
         }
 
-        thread evp(event_polling_thread, n, p, w, m, (FIFORequestChannel**)workerChan, &request_buffer, &hc);
+        thread evp(event_polling_thread, n, p, w, m, (TCPRequestChannel**)workerChan, &request_buffer, &hc);
 
         for(int i = 0; i < p; i++) {
             patient[i].join();
@@ -281,12 +237,12 @@ int main(int argc, char *argv[])
     }
     if(f_request) {
         for(int i = 0; i < w; i++) {
-            workerChan[i] = create_new_channel(chan);
+            workerChan[i] = new TCPRequestChannel(host, port);
         }
 
-        thread filethread(file_thread_function, filename, &request_buffer, chan, m);
+        thread filethread(file_thread_function, filename, &request_buffer, workerChan[0], m);
 
-        thread evp(event_polling_thread, n, p, w, m, (FIFORequestChannel**)workerChan, &request_buffer, &hc);
+        thread evp(event_polling_thread, n, p, w, m, (TCPRequestChannel**)workerChan, &request_buffer, &hc);
 
         filethread.join();
 
@@ -312,10 +268,4 @@ int main(int argc, char *argv[])
         delete workerChan[i];
     }
     cout << "All worker channels deleted" << endl;
-
-    chan->cwrite ((char *) &q, sizeof (MESSAGE_TYPE));
-    cout << "All Done!!!" << endl;
-    delete chan;
-
-    wait(0);
 }

@@ -63,10 +63,10 @@ RM = /home/osboxes/Downloads/clion-2020.2.4/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/osboxes/Desktop/CSCE-313/Projects/PA5
+CMAKE_SOURCE_DIR = /home/osboxes/Desktop/CSCE-313/Projects/PA6
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug
+CMAKE_BINARY_DIR = /home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/PA4.dir/depend.make
@@ -79,68 +79,68 @@ include CMakeFiles/PA4.dir/flags.make
 
 CMakeFiles/PA4.dir/client.cpp.o: CMakeFiles/PA4.dir/flags.make
 CMakeFiles/PA4.dir/client.cpp.o: ../client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PA4.dir/client.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/client.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA5/client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PA4.dir/client.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/client.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA6/client.cpp
 
 CMakeFiles/PA4.dir/client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA4.dir/client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA5/client.cpp > CMakeFiles/PA4.dir/client.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA6/client.cpp > CMakeFiles/PA4.dir/client.cpp.i
 
 CMakeFiles/PA4.dir/client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA4.dir/client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA5/client.cpp -o CMakeFiles/PA4.dir/client.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA6/client.cpp -o CMakeFiles/PA4.dir/client.cpp.s
 
 CMakeFiles/PA4.dir/common.cpp.o: CMakeFiles/PA4.dir/flags.make
 CMakeFiles/PA4.dir/common.cpp.o: ../common.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PA4.dir/common.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/common.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA5/common.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PA4.dir/common.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/common.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA6/common.cpp
 
 CMakeFiles/PA4.dir/common.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA4.dir/common.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA5/common.cpp > CMakeFiles/PA4.dir/common.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA6/common.cpp > CMakeFiles/PA4.dir/common.cpp.i
 
 CMakeFiles/PA4.dir/common.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA4.dir/common.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA5/common.cpp -o CMakeFiles/PA4.dir/common.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA6/common.cpp -o CMakeFiles/PA4.dir/common.cpp.s
 
 CMakeFiles/PA4.dir/FIFOreqchannel.cpp.o: CMakeFiles/PA4.dir/flags.make
 CMakeFiles/PA4.dir/FIFOreqchannel.cpp.o: ../FIFOreqchannel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PA4.dir/FIFOreqchannel.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/FIFOreqchannel.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA5/FIFOreqchannel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PA4.dir/FIFOreqchannel.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/FIFOreqchannel.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA6/FIFOreqchannel.cpp
 
 CMakeFiles/PA4.dir/FIFOreqchannel.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA4.dir/FIFOreqchannel.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA5/FIFOreqchannel.cpp > CMakeFiles/PA4.dir/FIFOreqchannel.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA6/FIFOreqchannel.cpp > CMakeFiles/PA4.dir/FIFOreqchannel.cpp.i
 
 CMakeFiles/PA4.dir/FIFOreqchannel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA4.dir/FIFOreqchannel.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA5/FIFOreqchannel.cpp -o CMakeFiles/PA4.dir/FIFOreqchannel.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA6/FIFOreqchannel.cpp -o CMakeFiles/PA4.dir/FIFOreqchannel.cpp.s
 
 CMakeFiles/PA4.dir/Histogram.cpp.o: CMakeFiles/PA4.dir/flags.make
 CMakeFiles/PA4.dir/Histogram.cpp.o: ../Histogram.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PA4.dir/Histogram.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/Histogram.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA5/Histogram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PA4.dir/Histogram.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/Histogram.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA6/Histogram.cpp
 
 CMakeFiles/PA4.dir/Histogram.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA4.dir/Histogram.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA5/Histogram.cpp > CMakeFiles/PA4.dir/Histogram.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA6/Histogram.cpp > CMakeFiles/PA4.dir/Histogram.cpp.i
 
 CMakeFiles/PA4.dir/Histogram.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA4.dir/Histogram.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA5/Histogram.cpp -o CMakeFiles/PA4.dir/Histogram.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA6/Histogram.cpp -o CMakeFiles/PA4.dir/Histogram.cpp.s
 
 CMakeFiles/PA4.dir/server.cpp.o: CMakeFiles/PA4.dir/flags.make
 CMakeFiles/PA4.dir/server.cpp.o: ../server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/PA4.dir/server.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/server.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA5/server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/PA4.dir/server.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PA4.dir/server.cpp.o -c /home/osboxes/Desktop/CSCE-313/Projects/PA6/server.cpp
 
 CMakeFiles/PA4.dir/server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PA4.dir/server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA5/server.cpp > CMakeFiles/PA4.dir/server.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/osboxes/Desktop/CSCE-313/Projects/PA6/server.cpp > CMakeFiles/PA4.dir/server.cpp.i
 
 CMakeFiles/PA4.dir/server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PA4.dir/server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA5/server.cpp -o CMakeFiles/PA4.dir/server.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/osboxes/Desktop/CSCE-313/Projects/PA6/server.cpp -o CMakeFiles/PA4.dir/server.cpp.s
 
 # Object files for target PA4
 PA4_OBJECTS = \
@@ -160,7 +160,7 @@ PA4: CMakeFiles/PA4.dir/Histogram.cpp.o
 PA4: CMakeFiles/PA4.dir/server.cpp.o
 PA4: CMakeFiles/PA4.dir/build.make
 PA4: CMakeFiles/PA4.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable PA4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable PA4"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PA4.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -173,6 +173,6 @@ CMakeFiles/PA4.dir/clean:
 .PHONY : CMakeFiles/PA4.dir/clean
 
 CMakeFiles/PA4.dir/depend:
-	cd /home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/osboxes/Desktop/CSCE-313/Projects/PA5 /home/osboxes/Desktop/CSCE-313/Projects/PA5 /home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug /home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug /home/osboxes/Desktop/CSCE-313/Projects/PA5/cmake-build-debug/CMakeFiles/PA4.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/osboxes/Desktop/CSCE-313/Projects/PA6 /home/osboxes/Desktop/CSCE-313/Projects/PA6 /home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug /home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug /home/osboxes/Desktop/CSCE-313/Projects/PA6/cmake-build-debug/CMakeFiles/PA4.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/PA4.dir/depend
 
