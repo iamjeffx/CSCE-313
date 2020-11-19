@@ -73,7 +73,6 @@ TCPRequestChannel::TCPRequestChannel(const string host, const string port) {
             exit(-1);
         }
         freeaddrinfo(res);
-//        cout << "Connected" << endl;
     }
 }
 
