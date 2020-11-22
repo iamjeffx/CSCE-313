@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.16)  20 NOV 2020 20:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.16)  21 NOV 2020 23:15
 entering extended mode
 **./PA6Report.tex
 (PA6Report.tex
@@ -136,8 +136,7 @@ tex.def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count195
 \l__pdf_internal_box=\box49
-)
-No file PA6Report.aux.
+) (PA6Report.aux)
 \openout1 = `PA6Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
@@ -175,25 +174,43 @@ ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
-) [1
+)
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 40
+.
+ (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
+
+(C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
+
+
+(C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+[1
 
 {C:/Users/jeffr/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 (PA6Report.aux) ) 
 Here is how much of TeX's memory you used:
- 1939 strings out of 479832
- 27722 string characters out of 2871057
- 294207 words of memory out of 3000000
- 18915 multiletter control sequences out of 15000+200000
- 538597 words of font info for 34 fonts, out of 3000000 for 9000
+ 2002 strings out of 479832
+ 28868 string characters out of 2871057
+ 295198 words of memory out of 3000000
+ 18950 multiletter control sequences out of 15000+200000
+ 545395 words of font info for 57 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,4n,72p,228b,118s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 66i,4n,72p,715b,118s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/jeffr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/
-base/8r.enc}<C:/Users/jeffr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
-/utmb8a.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
-/utmr8a.pfb>
-Output written on PA6Report.pdf (1 page, 14565 bytes).
+base/8r.enc}<C:/Users/jeffr/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmmi12.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX/fonts/type1/
+urw/times/utmb8a.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX/fonts/type1/
+urw/times/utmr8a.pfb>
+Output written on PA6Report.pdf (1 page, 36710 bytes).
 PDF statistics:
- 15 PDF objects out of 1000 (max. 8388607)
+ 19 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
