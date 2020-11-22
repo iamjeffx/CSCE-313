@@ -4,11 +4,10 @@
 
 \usepackage{times}
 \usepackage{amsmath}
-\usepackage{latexsym}
 \usepackage{fullpage}
+\usepackage{latexsym}
 \usepackage{graphicx}
 \usepackage{amsfonts}
-\usepackage[dvipsnames]{xcolor}
 
 \graphicspath{ {./images/} }
 
@@ -137,20 +136,50 @@ False. The bind command associates a socket to a given port.
 
 {\bf Solution:}\\
 
-
+We know that disk access time = seek time + rotation time + transfer time. The total time is $(10ms)+(0.1ms)+(1/250s)$ which gives a total time of $14.1ms$. 
 
 {\bf b. [10 pts]} 100 files each of size 1 byte. Assume they are scattered randomly through the disk. 
+
+{\bf Solution:}\\
+
+Here, we can calculate the total time as $(100*(10ms+0.1ms))+100*(1/250000000s)=1010.0004ms$. 
 
 {\bf 17. [25 pts]} A file system consists of disk blocks that are 32KB and pointers to blocks are each 16 bytes each. Each inode in this file system contains 10 direct pointers, 1 single indirect, 1 double indirect and 2 triple indirect pointers. Now, in this file system:
 
 {\bf a. [10 pts]} What is the maximum possible file size?
 
+{\bf Solution:}\\
+
+We know that each disk block has a size of 32KB. Since each pointer takes 16 btyes, we have that each block can store $2^{11}$ pointers. Therefore, we can compute the total size as follows.
+
+\begin{center}
+$32KB[10+2^{11}+2^{22}+2*2^{33}]=549890097472KB$\\
+\end{center}
+
+This is approximately 512TB (512.125TB) as the maximum file size. 
+
 {\bf b. [15 pts]} What is the overhead to represent this maximum-size file?
 
-{\bf 18. [40 pts]} Examine the  Tannenbaum’s solution to the Dining-Philosophers problem posted in the following: https://legacy.cs.indiana.edu/classes/p415-sjoh/hw/project/dining-philosophers/index.htm.
+Now we need to determine the amount of space needed to store the overhead for this file size. We would still need 17184065546 pointers and each pointer takes 16 bytes. Therefore, we get a total of 17184065546*16 bytes which is 274945048736 bytes (approximately 256GB or 256.063TB) to store the overhead. 
+
+{\bf 18. [40 pts]} Examine the Tannenbaum’s solution to the Dining-Philosophers problem posted in the following: https://legacy.cs.indiana.edu/classes/p415-sjoh/hw/project/dining-philosophers/index.htm.
 
 {\bf a. [25 pts]} Rewrite the given solution in C++ using the semaphore class from our class lecture, make sure the program compiles and runs. Test the program and verify that it works correctly and show that using screenshots.
 
+{\bf Solution:}\\
+
+A screenshot of the output produced by the code is shown below. 
+
+\begin{center}
+\includegraphics[width=6cm, height=14cm]{q18Output}
+\end{center}
+
+The code used to produce this output is attached. The code compiles and runs perfectly. 
+
 {\bf b. [15 pts]} Then, describe how this solution works and why it does not run into deadlocks.
+
+{\bf Solution:}\\
+
+The main idea of the philosopher function is that each philosopher goes through a cycle of taking chopsticks and putting down chopsticks. We have a Semaphore called $m$ that basically protects the state of each philosopher. We also have another vector of Semaphores that protects each philosopher. The code works correctly and doesn't have deadlocks because each time a philosopher tries to take chopsticks, it must check that the chopsticks are available before picking them up (it does this by checking that the philosopher to the left and right of the current philosopher aren't eating). Otherwise it doesn't pick up the chopsticks and waits (using the Semaphore) until the chopsticks are free and then they pick up the chopsticks. Since each Semaphore is used properly, there cannot be any deadlocks in the code. 
 
 \end{document}

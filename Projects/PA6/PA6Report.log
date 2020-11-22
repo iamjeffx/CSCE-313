@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.16)  20 NOV 2020 22:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.16)  22 NOV 2020 11:55
 entering extended mode
-**./Quiz5.tex
-(Quiz5.tex
+**./PA6Report.tex
+(PA6Report.tex
 LaTeX2e <2020-10-01> patch level 2
 L3 programming layer <2020-10-27> xparse <2020-03-03>
 (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -82,15 +82,15 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
 )
-(C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/preprint\fullpage.sty
-Package: fullpage 1999/02/23 1.1 (PWD)
-\FP@margin=\skip52
-)
 (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+(C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/preprint\fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip52
 )
 (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
@@ -126,7 +126,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
-7.
+5.
 
 (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -136,23 +136,23 @@ tex.def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count195
 \l__pdf_internal_box=\box49
-) (Quiz5.aux)
-\openout1 = `Quiz5.aux'.
+) (PA6Report.aux)
+\openout1 = `PA6Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
 
 (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -175,149 +175,54 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 44--45
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--56
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
-
- []
-
-[1
-
-{C:/Users/jeffr/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
-
- []
-
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 13
-9.
-(C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 40
+.
+ (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 139
-.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
 
 (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 139
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
+
 
 (C:\Users\jeffr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+<./images//PA6_WT.png, id=1, 473.51906pt x 365.11406pt>
+File: ./images//PA6_WT.png Graphic file (type png)
+<use ./images//PA6_WT.png>
+Package pdftex.def Info: ./images//PA6_WT.png  used on input line 45.
+(pdftex.def)             Requested size: 227.61891pt x 170.7178pt.
+<./images//PA6BT.png, id=2, 473.51906pt x 365.11406pt>
+File: ./images//PA6BT.png Graphic file (type png)
+<use ./images//PA6BT.png>
+Package pdftex.def Info: ./images//PA6BT.png  used on input line 46.
+(pdftex.def)             Requested size: 227.61891pt x 170.7178pt.
 
- []
+[1
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
-
- []
-
-
-Overfull \hbox (31.85143pt too wide) in paragraph at lines 165--166
-\OT1/ptm/m/n/12 the fol-low-ing: https://legacy.cs.indiana.edu/classes/p415-sjo
-h/hw/project/dining-philosophers/index.htm. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
-
- []
-
-<./images//q18Output.png, id=16, 229.45724pt x 503.481pt>
-File: ./images//q18Output.png Graphic file (type png)
-<use ./images//q18Output.png>
-Package pdftex.def Info: ./images//q18Output.png  used on input line 174.
-(pdftex.def)             Requested size: 170.7165pt x 398.34486pt.
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
-
- []
-
-[5 <./images//q18Output.png>] [6] (Quiz5.aux) ) 
+{C:/Users/jeffr/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./images//PA6_W
+T.png> <./images//PA6BT.png>] [2] (PA6Report.aux) ) 
 Here is how much of TeX's memory you used:
- 2014 strings out of 479832
- 29018 string characters out of 2871057
- 298210 words of memory out of 3000000
- 18959 multiletter control sequences out of 15000+200000
+ 2019 strings out of 479832
+ 29162 string characters out of 2871057
+ 298198 words of memory out of 3000000
+ 18964 multiletter control sequences out of 15000+200000
  545395 words of font info for 57 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,5n,72p,832b,188s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/jeffr/AppData/Local/Pr
-ograms/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/jeffr/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/jeffr/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/jeffr/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/jef
-fr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
-Users/jeffr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/
-Users/jeffr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Quiz5.pdf (6 pages, 205543 bytes).
+ 66i,4n,72p,715b,188s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/jeffr/AppData/Loca
+l/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/jeffr/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/jeffr/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/jeffr/
+AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/jeffr/
+AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
+Output written on PA6Report.pdf (2 pages, 55980 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
+ 30 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
