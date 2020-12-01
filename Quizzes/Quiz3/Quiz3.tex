@@ -215,6 +215,7 @@ You cannot change the order of the first two lines because you may cause a deadl
 \tab /* Start Critical Section */\\
 \tab ......\\
 \tab /* End Critical Section */\\
+\tab mutex.V()\\
 \}\\
 
 \noindent ThreadB() \{ \\
@@ -222,7 +223,7 @@ You cannot change the order of the first two lines because you may cause a deadl
 \tab /* Start Critical Section */\\
 \tab .....\\
 \tab /* End Critical Section */ \\
-\tab mutex.V()\\
+\tab mutex.P()\\
 \}
 
 {\bf Solution:}\\
@@ -231,7 +232,7 @@ The maximum number of threads in the critical section is three. Assume that we r
 
 {\bf 5 [25 pts]} Consider a multithreaded web crawling and indexing program, which needs to first download a web page and then parse the HTML of that page to extract links and other useful information from it. The problem is both downloading a page and parsing it can be very slow depending on the content. Your goal is to make both these components as fast as possible. First, to speed up downloading, you delegate the task to m downloader threads, each with only a portion of the page to download. (Note that this is quite common in real life and a typical web browser does this all the time as long as the server supports this feature. Usually it is done through opening multiple TCP connections with the server and downloading equal sized chunks through each connection). The M chunks are downloaded to a single page buffer. Once all the chunks are downloaded into the buffer, you can then start parsing it. However, since you want to speed up parsing as well, you now use n parsing threads who again can parse the page independently, and together they take much less time.   
 
-By now, you probably see that M download threads are acting as Producers and N parser threads as Consumers. Additionally, note that the both downloader and parser threads come from a pool of M Producer threads and N Consumer threads where M>m and N>n. Out of many of these, you have to let exactly m Producer threads carry out the download and then exactly n consumer threads parse, and then the whole cycle will repeat. You cannot assume m=M or n=N. Assume that you can call the function download(URL) to download the page and parse (chunk) to parse a chunk of the page. No need to be any more specific/concrete than that. The main thing of interest is the Producer-Consumer relation.  
+By now, you probably see that M download threads are acting as Producers and N parser threads as Consumers. Additionally, note that the both downloader and parser threads come from a pool of M Producer threads and N Consumer threads where M$>$m and N$>$n. Out of many of these, you have to let exactly m Producer threads carry out the download and then exactly n consumer threads parse, and then the whole cycle will repeat. You cannot assume m=M or n=N. Assume that you can call the function download(URL) to download the page and parse (chunk) to parse a chunk of the page. No need to be any more specific/concrete than that. The main thing of interest is the Producer-Consumer relation.  
 
 Look at the given program 1PNC.cpp that works for 1 Producer and n Consumer threads that launches hundreds of producer and consumer threads. You need to extend the program such that it works for m-producers instead of just 1. Add necessary semaphores to the program. However, you will lose points if you add unnecessary Semaphores or Mutexes. To keep things simple, declare the mutexes as instances of the semaphore class given in  Semaphore.h. Test your program to make sure that it is correct. Include a file called Q5.cpp in your submission that contains the correct program.
 
@@ -256,8 +257,45 @@ $>>>>>>>>>>>>>>>>>>>>$Consumer [10] got $<<<<<<<<<<$6\\
 $>>>>>>>>>>>>>>>>>>>>$Consumer [9] got $<<<<<<<<<<$6\\
 // ETC.\\
 
-{\bf 6 [15 pts]}
+{\bf Solution:}\\
 
-{\bf 7 [20 pts]}
+File is attached.
+
+{\bf 6 [15 pts]} There are 3 sets of threads A, B, C. First 1 instance of A has to run, then 2 instances of B and then 1 instance of C, then the cycle repeats. This emulates a chain of producer-consumer relationship that we learned in class, but between multiple pairs of threads. Write code to run this set of threads.
+
+Assumptions and Instructions: There are 100s of A, B, C threads trying to run. Write only the thread functions with proper wait and signal operation in terms of semaphores. You can use the necessary number of semaphores as long as you declare them in global and initialize them properly with correct values. The actual operations done by A, B and C does not really matter. Submit a separate C++ file called Q6.cpp that includes the solution.
+
+{\bf Solution:}\\
+
+File is attached.
+
+{\bf 7 [20 pts]} Implement a Mutex using the atomic swap(variable, register) instruction in x86. Your mutex can use busy-spin. Note that you cannot access a register directly other than using this swap instruction. [Note that there is no direct swap() instruction available in C/C++. So, we are expecting pseudocode instead of a fully functional code.]
+
+{\bf Solution:}\\
+
+\noindent
+class Mutex \{\\
+private:\\
+\tab const int LOCKED = 1;\\
+\tab const int UNLOCKED = 0;\\
+\tab int reg = 1;\\
+\tab int temp = 0;\\
+public:\\
+\tab lock() \{\\
+\tab\tab while(true) \{\\
+\tab\tab\tab swap(temp, reg);\\
+\tab\tab\tab if(temp == UNLOCKED) \{\\
+\tab\tab\tab\tab swap(temp, reg);\\
+\tab\tab\tab\tab break;\\
+\tab\tab\tab \} else\{\\
+\tab\tab\tab\tab swap(temp, reg);\\
+\tab\tab\tab \}\\
+\tab\tab \}\\
+\tab \}\\
+\tab unlock() \{\\
+\tab\tab temp = UNLOCKED;\\
+\tab\tab swap(temp, reg);\\
+\tab \}\\
+\}
 
 \end{document}
