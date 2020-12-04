@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.16)  4 SEP 2020 12:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.16)  5 SEP 2020 14:46
 entering extended mode
 **./Report.tex
 (Report.tex
@@ -135,8 +135,7 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)
-No file Report.aux.
+) (Report.aux)
 \openout1 = `Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
@@ -153,6 +152,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
 5.
+
 ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -232,25 +232,68 @@ G,.JBIG2,.JB2,.eps]
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
- [1
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 40
+.
+ ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
+
+ ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
+
+ ("C:\Users\jeffr\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
 
 {C:/Users/jeffr/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(Report.aux) ) 
+<./received/Time_Plot_Normal.png, id=13, 474.27188pt x 365.86688pt>
+File: ./received/Time_Plot_Normal.png Graphic file (type png)
+<use ./received/Time_Plot_Normal.png>
+Package pdftex.def Info: ./received/Time_Plot_Normal.png  used on input line 65
+.
+(pdftex.def)             Requested size: 227.61897pt x 170.7181pt.
+<./received/Time_Plot_xlog.png, id=14, 474.27188pt x 365.86688pt>
+File: ./received/Time_Plot_xlog.png Graphic file (type png)
+<use ./received/Time_Plot_xlog.png>
+Package pdftex.def Info: ./received/Time_Plot_xlog.png  used on input line 66.
+(pdftex.def)             Requested size: 227.61897pt x 170.7181pt.
+<./received/Time_Plot_xlog_y.png, id=15, 474.27188pt x 365.86688pt>
+File: ./received/Time_Plot_xlog_y.png Graphic file (type png)
+<use ./received/Time_Plot_xlog_y.png>
+Package pdftex.def Info: ./received/Time_Plot_xlog_y.png  used on input line 67
+.
+(pdftex.def)             Requested size: 227.61897pt x 170.7181pt.
+
+[2 <./received/Time_Plot_Normal.png> <./received/Time_Plot_xlog.png>] [3 <./rec
+eived/Time_Plot_xlog_y.png>] (Report.aux) ) 
 Here is how much of TeX's memory you used:
- 2270 strings out of 492450
- 31801 string characters out of 3120005
- 95932 words of memory out of 3000000
- 6615 multiletter control sequences out of 15000+200000
- 7149 words of font info for 19 fonts, out of 3000000 for 9000
+ 2370 strings out of 492450
+ 33729 string characters out of 3120005
+ 99934 words of memory out of 3000000
+ 6680 multiletter control sequences out of 15000+200000
+ 17396 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,4n,32p,298b,112s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
-/base/8r.enc}<C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/
-times/utmb8a.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-urw/times/utmr8a.pfb>
-Output written on Report.pdf (1 page, 14579 bytes).
+ 55i,12n,32p,900b,239s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/jeffr/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/jeffr/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jeffr/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/j
+effr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb
+><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr8.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb><C:/Users/jeffr/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/jeffr/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/jeffr/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/jeffr/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Report.pdf (3 pages, 99580 bytes).
 PDF statistics:
- 15 PDF objects out of 1000 (max. 8388607)
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
